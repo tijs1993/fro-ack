@@ -1,0 +1,10 @@
+Filters:
+- gezinssituatie
+- enkel of dubbel tarief
+- grootte woning
+- elektriciteit of gas
+- locatie
+
+
+Genereer op een kaart users (online), en op basis van de filters worden andere gebruikers getoond (beter of slechter -> kleur).
+Er moet kunnen gechat worden (bv. om tips uit te wisselen)
