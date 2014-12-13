@@ -1,10 +1,55 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+//font
+$font: 'Open Sans', sans-serif;
+
+body, html{
+    width:100%;
+}
+//colors
+$accent-color: #f36861;
+$accent-color2: #343e4e;
+
+.navbar-default{
+    background: #FFF;
+    font-weight: 400;
+    letter-spacing: -0.2;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus
 .thing-form {
-    margin: 20px 0;
+    color: $accent-color;
+    text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+    color: $accent-color;
+    //text-decoration: underline;
+    text-transform: uppercase;
+    background: #FFF;
+    border-bottom: 1.5px solid $accent-color;
+    border-bottom-style: solid;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.navbar-default .navbar-nav > li > a{
+    color: $accent-color;
+    text-transform: uppercase;
+}
+
+.navbar-nav{
+    margin-left: 30%;
 }
 
 #banner {
     border-bottom: none;
     margin-top: -20px;
+    background-image: url("../assets/images/headerImage.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
 }
 
 #banner h1 {
@@ -12,6 +57,97 @@
     line-height: 1;
     letter-spacing: -1px;
 }
+
+.containerfull {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container-fluid{  
+    
+    padding-top: 90px;
+
+    h1{
+        font-size: 20px;
+        color: $accent-color;
+        text-align: center;
+        padding-bottom: 90px;
+        
+        span{
+            border: 3px solid $accent-color;
+            padding: 10px 20px 10px 20px;
+
+        }
+    }
+
+    section{
+        line-height: 30px;
+        color: #000;    
+        font-family: $font;
+        font-weight: 300;
+        padding-bottom: 90px;
+        font-size: 16px;
+        //text-align: center;
+
+        span{
+            font-weight: bold;
+        }
+    }
+}
+
+
+.accentcolor{
+
+    background: $accent-color;
+    width: 100%;
+
+.container-fluid{  
+
+    
+    padding-top: 90px;
+
+    h1{
+        font-size: 20px;
+        color: #FFF;
+        text-align: center;
+        padding-bottom: 90px;
+        
+        span{
+            border: 3px solid #FFF;
+            padding: 10px 20px 10px 20px;
+
+        }
+    }
+
+    section{
+        line-height: 30px;
+        color: #FFF;    
+        font-family: $font;
+        font-weight: 300;
+        padding-bottom: 90px;
+        font-size: 16px;
+        //text-align: center;
+
+        span{
+            font-weight: bold;
+        }
+    }
+}
+
+}
+
+.row2{
+    background: $accent-color;
+    width: 100%;
+
+}
+
+.footer{
+    background: $accent-color2;
+    margin: 0;
+    padding: 0;
+}
+
 
 .hero-unit {
     position: relative;
