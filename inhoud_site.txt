@@ -1,0 +1,6 @@
+energie(verbruik)
+1.	hoe werd/wordt energie opgewekt (soorten)
+2.	hoe was/is het verbruik (ev. toestellen vroeger en nu qua verbruik)
+3.	invloed op milieu
+4.	toekomstige energiebronnen
+5.	tips energiesparen

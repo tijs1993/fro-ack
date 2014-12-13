@@ -1,0 +1,12 @@
+--> mongod laten runnen
+--> mongo zelf afsluiten
+
+BACKUP DATABASE
+mongodump -d <databasenaam (project-dev)> -o <outputfile>
+
+RESTORE DATABASE
+1) samenvoegen 2 databasen
+mongorestore <outputfile>
+
+2) database overschrijven
+mongorestore --drop <outputfile>
