@@ -8,6 +8,12 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
  * App-wide Styles
  */
 
+ .container{
+ 	width: 100%;
+ 	padding-left: 0;
+ 	padding-right: 0;
+ }
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
