@@ -11,14 +11,122 @@ $btnGooglePlusBackgroundHighlight:  #c53727;
 $btnGithubBackground:               #fafafa;
 $btnGithubBackgroundHighlight:      #ccc;
 
+$accent-color: #f36861;
+$accent-color2: #343e4e;
+$darkeraccentcolor: #f15e57;
+
+input{
+	width: 100%;
+}
+
+form{
+	margin-left: auto;
+	margin-right: auto;
+
+
+	label{
+		font-weight: 400;
+	}
+}
+
+.formcontainer{
+
+
+   	line-height: 30px;
+    color: #000;          
+    font-weight: 300;
+    padding-bottom: 45px;
+    font-size: 16px;
+
+	h1{
+		padding-top: 45px;
+        font-size: 20px;
+        color: $accent-color;
+        text-align: center;
+        padding-bottom: 45px;
+        
+        span{
+            border: 3px solid $accent-color;
+            padding: 10px 20px 10px 20px;
+
+        }
+    }
+
+    p{
+    	padding: 15px;
+    	text-align: center;
+    }
+
+    code{
+    	padding: 2px 4px;
+		font-size: 90%;
+		color: $accent-color;
+		background-color: rgba(243, 104, 97, 0.1);
+		border-radius: 4px;
+    }
+
+
+
+}
+
+
+.form-control{
+	border-radius: 0;
+	color: $accent-color2;
+}
+
+.form-control:focus{
+	border-color: rgba(243, 104, 97, 0.9);
+	border-width: 2px;
+	box-shadow: none;
+
+}
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline{
+	color: #eb4d45;
+	font-weight: 600;
+}
+
+.btn{
+	border-radius: 0;
+}
+
+.btn-login{
+	background: $accent-color;
+	color: #FFF;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.btn-login:hover{
+	background: $darkeraccentcolor;
+	color: #FFF;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.btn-register{
+	background: #FFF;
+	color: $accent-color;
+	text-transform: uppercase;
+	font-size: 14px;
+	border-color: $accent-color;
+}
+
+hr{
+	margin-top: 60px;
+	margin-bottom: 0px;
+}
 // Social buttons
 // --------------------------------------------------
 
 .btn-facebook {
-  @include button-variant($btnText, $btnFacebookBackgroundHighlight, $btnFacebookBackgroundHighlight);
+	margin-top: 30px;
+  @include button-variant($btnText, #4d99cb, #4d99cb);
 }
 .btn-google-plus {
-  @include button-variant($btnText, $btnGooglePlusBackground, $btnGooglePlusBackgroundHighlight);
+	margin-top: 30px;
+  @include button-variant($btnText, #ed8f6b, #ed8f6b);
 }
 .btn-github {
   @include button-variant($btnTextAlt, $btnGithubBackground, $btnGithubBackgroundHighlight);

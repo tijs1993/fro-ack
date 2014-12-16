@@ -5,6 +5,9 @@ $font: 'Open Sans', sans-serif;
 
 body, html{
     width:100%;
+    padding: 0;
+    margin: 0;
+    font-family: $font;
 }
 //colors
 $accent-color: #f36861;
@@ -14,12 +17,16 @@ $accent-color2: #343e4e;
     background: #FFF;
     font-weight: 400;
     letter-spacing: -0.2;
+    padding-left: 20px;
+    width: 100%;
 }
+
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus
 .thing-form {
     color: $accent-color;
     text-transform: uppercase;
+
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
@@ -30,13 +37,14 @@ $accent-color2: #343e4e;
     border-bottom: 1.5px solid $accent-color;
     border-bottom-style: solid;
     padding-bottom: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
+    // padding-left: 5px;
+    // padding-right: 5px;
 }
 
 .navbar-default .navbar-nav > li > a{
     color: $accent-color;
     text-transform: uppercase;
+    
 }
 
 .navbar-nav{
@@ -91,6 +99,7 @@ $accent-color2: #343e4e;
 
         span{
             font-weight: bold;
+            
         }
     }
 }
@@ -138,14 +147,28 @@ $accent-color2: #343e4e;
 
 .row2{
     background: $accent-color;
-    width: 100%;
+    
 
 }
 
-.footer{
-    background: $accent-color2;
+.row{
     margin: 0;
     padding: 0;
+}
+.footer{
+    background: $accent-color2;
+    margin-top: 0;
+    height: 70px;
+    
+    li{
+        list-style-type: none;
+    }
+
+    li > a{
+        padding: 15px;
+        color: #FFF;
+        text-decoration: none;
+    }
 }
 
 
@@ -156,11 +179,4 @@ $accent-color2: #343e4e;
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     background: #4393B9;
-}
-
-.footer {
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 70px;
-    border-top: 1px solid #E5E5E5;
 }
