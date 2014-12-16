@@ -2,13 +2,19 @@
 
 <div class="container">
   <div class="row">
+
+  <div class="col-md-3"></div>
+
+  <!-- form -->
+  <div class="col-md-6  formcontainer">
     <div class="col-sm-12">
-      <h1>Login</h1>
-      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@test.com</code> / <code>test</code></p>
-      <p>Admin account is <code>admin@admin.com</code> / <code>admin</code></p>
+      <h1><span>LOGIN</span></h1>
+      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. <br> Default account is <code>test@test.com</code> / <code>test</code>
+      Admin account is <code>admin@admin.com</code> / <code>admin</code></p>
     </div>
+   
     <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="login(form)" novalidate>
+      <form class="form col-sm-8 col-md-12"  name="form" ng-submit="login(form)" novalidate>
 
         <div class="form-group">
           <label>Email</label>
@@ -53,6 +59,11 @@
         </div>
       </form>
     </div>
+
+  </div> <!-- endform -->
+
+  <div class="col-md-3"></div>
+
   </div>
-  <hr>
+  
 </div>

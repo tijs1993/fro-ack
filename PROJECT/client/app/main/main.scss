@@ -7,6 +7,7 @@ body, html{
     width:100%;
     padding: 0;
     margin: 0;
+    font-family: $font;
 }
 //colors
 $accent-color: #f36861;
@@ -98,6 +99,7 @@ $accent-color2: #343e4e;
 
         span{
             font-weight: bold;
+            
         }
     }
 }
