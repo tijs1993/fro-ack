@@ -2,10 +2,15 @@
 
 angular.module 'projectApp'
 .controller 'NavbarCtrl', ($scope, $location, Auth) ->
-  $scope.menu = [
+  $scope.menu = [{
     title: 'Home'
     link: '/'
-  ]
+  },
+    {
+      title: 'Energie besparen'
+      link: '/energiebesparen'
+    }]
+
   $scope.isCollapsed = true
   $scope.isLoggedIn = Auth.isLoggedIn
   $scope.isAdmin = Auth.isAdmin
