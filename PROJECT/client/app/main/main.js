@@ -7,9 +7,11 @@
       controller: 'MainCtrl'
     }).when('/energiebesparen', {
       templateUrl: 'app/main/energieBesparen/energiebesparen.html'
+      controller: 'MainCtrl'
     });
   });
 
 }).call(this);
 
 //# sourceMappingURL=main.js.map
+

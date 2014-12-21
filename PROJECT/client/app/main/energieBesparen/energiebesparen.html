@@ -1,8 +1,106 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
+<header class="hero-unit" id="bannerBesparen">
+  <div class="container">
+    <!-- <h1>'Allo, 'Allo!</h1>
+    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+    <img src="assets/images/yeoman.png" alt="I'm Yeoman"> -->
+  </div>
+</header>
 
 <div class="containerfull">
 
-    <div class="container">
+<div class="container">
+  <!-- <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Features:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
+        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
+      </ul>
     </div>
+  </div>
+
+  <form class="thing-form">
+    <label>Syncs in realtime across clients</label>
+    <p class="input-group">
+      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
+      </span>
+    </p>
+  </form> -->
+
+  <div class="row">
+
+    <div class="col-md-3"></div>
+
+    <div class="container-fluid col-md-6">
+        <h1><span>WAAROM ENERGIE BESPAREN</span></h1>
+
+        <section>
+        <h2>Finacieel voordelig</h2>
+          <p>Energie en duurzaamheid zijn steeds belangrijkere begrippen in onze samenleving. <span>Fossiele brandstoffen</span>, zoals gas, olie en steenkool <span>raken op</span>. Door de toenemende welvaart is er bovendien steeds meer vraag naar energie.Gevolg is dat de <span>tarieven</span> voor gas en elektra jaarlijks <span>stijgen</span>. En dat merkt u in uw portemonnee. U betaalt een steeds <span>hogere energierekening</span>.</p>
+          <br>
+        <h2>Tegen klimaatsvervuiling</h2>
+          <p>Daarnaast leidt gas- en elektraverbruik tot <span>uitstoot van CO²</span>. Dit zogenaamde <span>broeikaseffect</span> heeft een negatieve invloed op het klimaat. De gemiddelde temperatuur op aarde stijgt met alle vervelende gevolgen van dien. Denk aan de <span>toenemende droogte</span> en de <span>stijging van de zeespiegel</span>. De samenleving vraagt om verandering. Energiebesparing en verduurzaming van de energievoorziening is dan ook bittere noodzaak.</p>
+        </section>
+    </div>
+
+    <div class="col-md-3"></div>
+  </div>
+
+<div class="accentcolor">
+  
+  <div class="row">
+
+    <div class="col-md-3"></div>
+
+    <div class="container-fluid col-md-6">
+        <h1><span>ZO KAN JIJ BESPAREN</span></h1>
+
+        <section class="tips">
+        <div class="centertips">
+          	<nav class="tipsbesparen">
+
+			  <button ng-click="toggleTipsCategorie1On()" type="button" id="tipc1" class="btn btn-multiple tipc1">Verwarming</button>
+
+			  <button ng-click="toggleTipsCategorie2On()" type="button" id="tipc2" class="btn btn-multiple">Warm water</button>
+
+			  <button ng-click="toggleTipsCategorie3On()" type="button" id="tipc3" class="btn btn-multiple">Verlichting</button>
+			  <!-- <button type="button" class="btn btn-multiple">Koelen en vriezen</button>
+			  <button type="button" class="btn btn-multiple">Wassen en drogen</button>
+			  <button type="button" class="btn btn-multiple">Koken</button>
+			  <button type="button" class="btn btn-multiple">Overige</button> -->
+			</nav>
+		</div>
+
+			<p ng-hide="btn1click" class="tips1">01</p>
+
+			<p ng-hide="btn2click" class="tips2">02</p>
+
+			<p ng-hide="btn3click" class="tips3">03</p>
+
+        </section>
+    </div>
+
+    <div class="col-md-3"></div>
+    </div>
+  </div>
+
 </div>
+
+</div>
+
+
+
+<footer class="footer">
+  <div class="container" ng-controller="NavbarCtrl">
+
+  <!-- <ul>
+    <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+              <a ng-href="{{item.link}}">{{item.title}}</a>
+    </li>
+  </ul> -->
+      
+  </div>
+</footer>
