@@ -51,7 +51,7 @@ $accent-color2: #343e4e;
 }
 
 .navbar-nav{
-    margin-left: 20%;
+    margin-left: 15%;
 
 
 }
@@ -87,6 +87,15 @@ $accent-color2: #343e4e;
     border-bottom: none;
     margin-top: -20px;
     background-image: url("../assets/images/headerImageBesparen.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+#bannerZonneEnergie{
+    border-bottom: none;
+    margin-top: -20px;
+    background-image: url("../assets/images/headerImageZonneEnergie.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 500px;
@@ -173,10 +182,30 @@ $accent-color2: #343e4e;
         font-weight: 300;
         padding-bottom: 90px;
         font-size: 16px;
-        //text-align: center;
+        
+        p{
+            margin-bottom: 5px;
+            
+        }
+        a{
+            color:#FFF;
+            font-weight: bold;
+            font-size: 14px;
+
+
+            i{
+                font-size: 10px;
+                margin-bottom: 50px;
+            }
+
+        }
 
         span{
             font-weight: bold;
+        }
+
+        .readmore{
+            margin-left: 15px;
         }
     }
 }
