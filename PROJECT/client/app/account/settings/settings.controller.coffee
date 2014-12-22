@@ -2,9 +2,10 @@
 
 angular.module 'projectApp'
 .controller 'SettingsCtrl', ($scope, User, Auth) ->
+  #console.log(Auth.getCurrentUser());
   $scope.errors = {}
   $scope.changePassword = (form) ->
-    $scope.submitted = true
+    $scope.submitted = false
 
     if form.$valid
       Auth.changePassword $scope.user.oldPassword, $scope.user.newPassword
