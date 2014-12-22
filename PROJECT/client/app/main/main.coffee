@@ -9,3 +9,5 @@ angular.module 'projectApp'
   .when '/energiebesparen',
     templateUrl: 'app/main/energieBesparen/energiebesparen.html'
     controller: 'energieBesparenCtrl'
+  .when '/zonne-energie',
+  	templateUrl: 'app/main/zonneEnergie/zonneenergie.html'

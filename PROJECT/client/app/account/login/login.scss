@@ -189,7 +189,57 @@ form{
 	outline: none;
 }
 
-.btn-multiplea:active{
+.btn-multiple:active{
+	outline: none;
+}
+
+.btn-second{
+	background: $accent-color;
+	color: #FFF;
+	text-transform: uppercase;
+	font-size: 14px;
+	border-color: #FFF;
+	border-width: 1.8px;
+	border-radius: 3px;
+	font-weight: 300;
+	margin-bottom: 90px;
+
+	a{
+		text-decoration: none;
+		color: #FFF;
+
+		&:hover{
+		color: $accent-color;
+	}
+	}
+
+}
+
+.btn-second:hover{
+	background: #FFF;
+	color: $accent-color;
+	text-transform: uppercase;
+	font-size: 14px;
+	border-color: #FFF;
+	border-width: 1.8px;
+	border-radius: 3px;
+	font-weight: 300;
+	margin-bottom: 90px;
+}
+
+.btn-second:focus{
+	background: #FFF;
+	color: $accent-color;
+	text-transform: uppercase;
+	font-size: 14px;
+	border-color: #FFF;
+	border-width: 1.8px;
+	border-radius: 3px;
+	font-weight: 300;
+	outline: none;
+}
+
+.btn-second:active{
 	outline: none;
 }
 
