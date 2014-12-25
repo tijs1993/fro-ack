@@ -15,6 +15,7 @@
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.isLocalUser = Auth.isLocalUser;
     $scope.logout = function() {
       Auth.logout();
       return $location.path('/login');

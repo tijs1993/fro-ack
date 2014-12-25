@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "zonneenergie.controller.js",
+  "sourceRoot": "",
+  "sources": [
+    "zonneenergie.controller.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,YAAf,CACA,CAAC,UADD,CACY,kBADZ,EACgC,SAAC,MAAD,GAAA,CADhC,CAFA,CAAA;AAAA"
+}

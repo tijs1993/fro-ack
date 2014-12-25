@@ -15,7 +15,7 @@ angular.module 'projectApp'
         password: $scope.user.password
 
       .then ->
-        $location.path '/'
+        $location.path '/accountsetup'
 
       .catch (err) ->
         err = err.data

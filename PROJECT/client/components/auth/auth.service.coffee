@@ -128,6 +128,13 @@ angular.module 'projectApp'
   isAdmin: ->
     currentUser.role is 'admin'
 
+  ###
+  Check if user is logged-in on the platform
+
+  @return {Boolean}
+  ###
+  isLocalUser: ->
+    currentUser.provider is 'local'
 
   ###
   Get auth token

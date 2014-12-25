@@ -15,6 +15,7 @@ angular.module 'projectApp'
   $scope.isLoggedIn = Auth.isLoggedIn
   $scope.isAdmin = Auth.isAdmin
   $scope.getCurrentUser = Auth.getCurrentUser
+  $scope.isLocalUser = Auth.isLocalUser
 
   $scope.logout = ->
     Auth.logout()
