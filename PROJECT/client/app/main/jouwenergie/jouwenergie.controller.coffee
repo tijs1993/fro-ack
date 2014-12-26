@@ -1,12 +1,11 @@
 'use strict'
 
 angular.module 'projectApp'
-.controller 'jouwenergieCtrl', ($scope) ->
-  console.log('test');
+.controller 'jouwEnergieCtrl', ($scope) ->
   new Chartist.Bar('.ct-chart', {
     labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     series: [
-      [2, 3, 2, 4, 5,3,2]
+      [0,0,11.1,11.1,0,0,0]
     ]
   }, {
     seriesBarDistance: 30,
