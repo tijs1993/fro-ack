@@ -21,6 +21,24 @@ $accent-color2: #343e4e;
     
 
 }
+/* CHART OPTIONS */
+.ct-chart .ct-bar {
+  stroke:$accent-color2;
+  stroke-width: 30px;
+}
+.ct-chart .ct-series.ct-series-a .ct-bar{
+  stroke:$accent-color2;
+}
+.ct-chart .ct-label.ct-horizontal {
+  text-align: center;
+}
+.ct-chart .ct-label, .ct-chart .ct-label.ct-horizontal{
+  color:$accent-color2;
+}
+.ct-chart .ct-label, .ct-chart .ct-label.ct-vertical{
+  color:$accent-color2;
+}
+/*****************/
 
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus

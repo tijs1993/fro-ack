@@ -2,7 +2,7 @@
 
 angular.module 'projectApp'
 .controller 'energieBesparenCtrl', ($scope) ->
-	
+	console.log('test');
 	$scope.toggleTipsCategorie1On = ->	
 		$scope.btn1click = false;
 		$scope.btn2click = true;
