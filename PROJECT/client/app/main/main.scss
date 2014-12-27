@@ -9,6 +9,7 @@ body, html{
     margin: 0;
     font-family: $font;
 }
+
 //colors
 $accent-color: #f36861;
 $accent-color2: #343e4e;
@@ -21,6 +22,7 @@ $accent-color2: #343e4e;
     
 
 }
+
 /* CHART OPTIONS */
 .ct-chart .ct-bar {
   stroke:$accent-color2;
