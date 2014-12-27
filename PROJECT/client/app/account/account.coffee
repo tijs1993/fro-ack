@@ -15,3 +15,8 @@ angular.module 'projectApp'
     templateUrl: 'app/account/settings/settings.html'
     controller: 'SettingsCtrl'
     authenticate: true
+
+  .when '/accountsetup',
+    templateUrl: 'app/account/accountsetup/accountsetup.html'
+    controller: 'accountSetupCtrl'
+    authenticate: true

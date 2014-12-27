@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "accountsetup.controller.js",
+  "sourceRoot": "",
+  "sources": [
+    "accountsetup.controller.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,YAAf,CACA,CAAC,UADD,CACY,kBADZ,EACgC,SAAC,MAAD,EAAS,IAAT,EAAe,SAAf,EAA0B,OAA1B,GAAA;AAC9B,IAAA,OAAO,CAAC,GAAR,CAAY,MAAZ,CAAA,CAAA;WACA,MAAM,CAAC,cAAP,GAAwB,IAAI,CAAC,eAFC;EAAA,CADhC,CAFA,CAAA;AAAA"
+}

@@ -1,17 +1,47 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-  <div class="row">
-  <div class="col-md-3"></div>
+    <div class="row">
+        <div class="col-md-3"></div>
 
-  <!-- form -->
-  <div class="col-md-6  formcontainer">
-    <div class="col-sm-12">
-      <h1><span>account setup</span></h1>
+        <!-- form -->
+        <div class="col-md-6  formcontainer">
+            <div class="col-sm-12">
+                <h1><span>account setup</span></h1>
+            </div>
+            <div class="col-sm-12">
+                <form class="form col-sm-8 col-md-12" name="form" ng-submit="addExtraAccountData(form)" novalidate>
+
+                    <div class="form-group">
+                        <label>Name</label><p>{{ getCurrentUser().name }}</p>
+
+                        <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+                               mongoose-error/>
+
+                        <p class="help-block" ng-show="form.password.$error.mongoose">
+                            {{ errors.other }}
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>New Password</label>
+
+                        <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+                               ng-minlength="3"
+                               required/>
+
+                        <p class="help-block"
+                           ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+                            Password must be at least 3 characters.
+                        </p>
+                    </div>
+
+                    <p class="help-block"> {{ message }} </p>
+
+                    <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <hr>
     </div>
-    <div class="col-sm-12">
-      extra gegevens opvragen...
-    <div class="col-md-3"></div>
-  </div>
-  <hr>
-</div>
