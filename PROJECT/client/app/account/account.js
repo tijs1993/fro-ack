@@ -16,6 +16,10 @@
       templateUrl: 'app/account/accountsetup/accountsetup.html',
       controller: 'accountSetupCtrl',
       authenticate: true
+    }).when('/userdata', {
+      templateUrl: 'app/account/settings/userdata.html',
+      controller: 'userDataCtrl',
+      authenticate: true
     });
   });
 
