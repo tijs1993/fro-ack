@@ -4,10 +4,10 @@
   angular.module('projectApp').controller('NavbarCtrl', function($scope, $location, Auth) {
     $scope.menu = [
       {
-        title: 'Home',
+        title: 'Oorsprong',
         link: '/'
       }, {
-        title: 'Energie besparen',
+        title: 'Besparen',
         link: '/energiebesparen'
       }
     ];
