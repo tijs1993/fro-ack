@@ -18,9 +18,7 @@ $accent-color2: #343e4e;
     background: #FFF;
     font-weight: 400;
     letter-spacing: -0.2;
-    padding-left: 7%;
-    
-
+    padding-left: 45px;
 }
 
 /* CHART OPTIONS */
@@ -44,7 +42,7 @@ $accent-color2: #343e4e;
 }
 /*****************/
 
-
+/* BOOTSTRAP OVERRIDES */
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus
 .thing-form {
     color: $accent-color;
@@ -73,7 +71,7 @@ $accent-color2: #343e4e;
 }
 
 .navbar-nav{
-    margin-left: 15%;
+    margin-left: 10%;
 
 
 }
@@ -95,6 +93,15 @@ $accent-color2: #343e4e;
         margin: 0;
 }
 
+@media screen and (min-width: 768px)
+{
+  .navbar-nav.navbar-right:last-child{
+    margin-right: 0px;
+    padding-right: 30px;
+  }
+}
+
+/*****************/
 
 #banner {
     border-bottom: none;
@@ -167,52 +174,12 @@ $accent-color2: #343e4e;
             text-transform: uppercase;
         }
 
-        span{
-            font-weight: bold;
-        }
-    }
-}
-
-
-.accentcolor{
-
-    background: $accent-color;
-    width: 100%;
-
-.container-fluid{  
-
-    
-    padding-top: 90px;
-
-    h1{
-        font-size: 20px;
-        color: #FFF;
-        text-align: center;
-        padding-bottom: 90px;
-        
-        span{
-            border: 3px solid #FFF;
-            padding: 10px 20px 10px 20px;
-
-        }
-    }
-
-    section{
-        line-height: 30px;
-        color: #FFF;    
-        font-family: $font;
-        font-weight: 300;
-        padding-bottom: 90px;
-        font-size: 16px;
-        
-        p{
-            margin-bottom: 5px;
-            
-        }
         a{
-            color:#FFF;
+            //color: $accent-color;
+            color: #000;
             font-weight: bold;
             font-size: 14px;
+            text-decoration: underline;
 
 
             i{
@@ -225,37 +192,124 @@ $accent-color2: #343e4e;
         span{
             font-weight: bold;
         }
-
-        .readmore{
-            margin-left: 15px;
-        }
     }
 }
 
-}
 
-.row2{
+.accentcolor{
+
     background: $accent-color;
+    width: 100%;
+
+    .container-fluid{  
+
+        
+        padding-top: 90px;
+
+        h1{
+            font-size: 20px;
+            color: #FFF;
+            text-align: center;
+            padding-bottom: 90px;
+            
+            span{
+                border: 3px solid #FFF;
+                padding: 10px 20px 10px 20px;
+
+            }
+        }
+
+        section{
+            line-height: 30px;
+            color: #FFF;    
+            font-family: $font;
+            font-weight: 300;
+            padding-bottom: 90px;
+            font-size: 16px;
+            
+            p{
+                margin-bottom: 5px;
+                
+            }
+            a{
+                color:#FFF;
+                font-weight: bold;
+                font-size: 14px;
+
+
+                i{
+                    font-size: 10px;
+                    margin-bottom: 50px;
+                }
+
+            }
+
+            span{
+                font-weight: bold;
+            }
+
+            .readmore{
+                margin-left: 15px;
+                text-decoration: none;
+            }
+        }
+    }
+
 }
 
 .row{
     margin: 0;
     padding: 0;
 }
+
+
 .footer{
     background: $accent-color2;
     margin-top: 0;
-    height: 70px;
+    //height: 70px;
+    //text-align: center;
+
+    img{
+        width: 30px;
+        float: left;
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-block;
+    }
     
+    ul{
+
+        margin-top: 20px;
+         margin-bottom: 50px;
+    }
+
     li{
         list-style-type: none;
     }
 
     li > a{
-        padding: 15px;
+        padding-top: 5px;
         color: #FFF;
         text-decoration: none;
+        font-size: 12px;
+        //text-transform: uppercase;
     }
+
+    h3{
+        color: #FFF;
+        font-size: 14px;
+        //text-transform: uppercase;
+        margin-top: 45px;
+        margin-bottom: 20px;
+        font-weight: bold;
+
+        span{
+            border: 2px solid #FFF;
+            padding: 5px 10px 5px 10px;
+
+        }
+    }
+
 }
 
 .centertips{
@@ -272,6 +326,45 @@ $accent-color2: #343e4e;
 }
 
 
+//accountsignup
+form{
+    h2{
+        font-size: 18px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        margin-bottom: 45px;
+    }
+    input{
+        margin-bottom: 30px;
+        border-radius: 0;
+        color: $accent-color2;
+        &:focus{
+            border-color: rgba(243, 104, 97, 0.9);
+            border-width: 2px;
+            //box-shadow: none;
+            border-style: solid;
+            outline: none;
+        }
+    }
+
+    input[type="radio"]{
+        float: left;
+        background-color: $accent-color;
+    }
+
+}
+
+
+.inline-input{
+    label{
+        float: left;
+    }
+
+    input{
+        float: left;
+        margin-right: 15px;
+    }
+}
 
 
 .hero-unit {

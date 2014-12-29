@@ -1,5 +1,6 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
+
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
@@ -9,39 +10,65 @@
             <div class="col-sm-12">
                 <h1><span>account setup</span></h1>
             </div>
+
             <div class="col-sm-12">
-                <form class="form col-sm-8 col-md-12" name="form" ng-submit="addExtraAccountData(form)" novalidate>
+                <form class="col-md-12 col-sm-12 inline-input" name="form" ng-submit="saveExtraData(form)" novalidate>
+                    <h2 class="col-md-12">adres</h2>
+                    <label class="col-md-3 col-sm-12">Straat</label>
+                    <input type="text" placeholder="straatnaam" name="street" class="col-md-7 col-sm-12"
+                           ng-model="user.address.street" required/>
 
-                    <div class="form-group">
-                        <label>Name</label><p>{{ getCurrentUser().name }}</p>
+                    <input type="text" placeholder="nr" name="number" class="col-md-1 " ng-model="user.address.number"
+                           required/>
 
-                        <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
-                               mongoose-error/>
+                    <label class="col-md-3">Gemeente</label>
+                    <input type="text" placeholder="gemeente" name="city" class="col-md-6 "
+                           ng-model="user.address.city" required/>
+                    <input type="text" placeholder="postcode" name="zipcode" class="col-md-2 "
+                           ng-model="user.address.zipcode" required/>
 
-                        <p class="help-block" ng-show="form.password.$error.mongoose">
-                            {{ errors.other }}
-                        </p>
-                    </div>
+                    <label class="col-md-3">Land</label>
+                    <input type="text" placeholder="land" name="country" class="col-md-3" ng-model="user.address.country"
+                           required/>
 
-                    <div class="form-group">
-                        <label>New Password</label>
+                    <h2 class="col-md-12 col-xs-12">Geboortedatum</h2>
+                    <label class="col-md-3">Geboortedatum</label>
+                    <input type="date" name="geboortedatum" class="col-md-3" ng-model="user.birthday" required/>
 
-                        <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
-                               ng-minlength="3"
-                               required/>
+                    <h2 class="col-md-12 col-xs-12">gezinssituatie</h2>
+                    <label class="col-md-3">Aantal bewoners</label>
+                    <input type="text" placeholder="aantal" name="aantalbewoners" class="col-md-2"
+                           ng-model="user.numberOfResidents" required/>
 
-                        <p class="help-block"
-                           ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
-                            Password must be at least 3 characters.
-                        </p>
-                    </div>
 
-                    <p class="help-block"> {{ message }} </p>
+                    <h2 class="col-md-12 col-xs-12">teller</h2>
+                    <input type="radio" id="enkel" name="metertype" value="enkel" ng-model="user.meterType" checked><label for="enkel">Enkel tarief</label>
+                    <input type="radio" id="dubbel" name="metertype" value="dubbel" ng-model="user.meterType"><label for="dubbel">Dubbel tarief</label>
+
+                    <h2 class="col-md-12 col-xs-12">isolatie</h2>
+                    <select class="col-md-3 col-xs-3" ng-model="user.insulation">
+                        <option value="slecht">slecht</option>
+                        <option value="gemiddeld">gemiddeld</option>
+                        <option value="goed">goed</option>
+                        <option value="uitstekend">uitstekend</option>
+                    </select>
+
+                    <h2 class="col-md-12 col-xs-12">verwarming via</h2>
+                    <select class="col-md-3 col-xs-3" ng-model="user.typeOfHeating">
+                        <option value="gas">gas</option>
+                        <option value="elektriciteit">elektriciteit</option>
+                    </select>
+
+                    <h2 class="col-md-12 col-xs-12">grootte woning</h2>
+                    <select class="col-md-3 col-xs-3" ng-model="user.sizeOfBuilding">
+                        <option value="slecht">klein</option>
+                        <option value="gemiddeld">gemiddeld</option>
+                        <option value="goed">groot</option>
+                    </select>
 
                     <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+
                 </form>
             </div>
-            <div class="col-md-3"></div>
+
         </div>
-        <hr>
-    </div>

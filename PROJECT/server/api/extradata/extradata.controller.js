@@ -22,6 +22,13 @@ exports.findByAccountId = function (req, res) {
     });
 }
 
+exports.create = function(req, res) {
+    console.log(req.body);
+    ExtraData.create(req.body, function(err, extradata) {
+        if(err) { return handleError(res, err); }
+        return res.json(201, extradata);
+    });
+};
 
 function handleError(res, err) {
     return res.send(500, err);
