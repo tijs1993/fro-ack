@@ -1,64 +1,76 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
+
 <div class="container">
-  <div class="row">
-  <div class="col-md-3"></div>
+    <div class="row">
+        <div class="col-md-3"></div>
 
-  <!-- form -->
-  <div class="col-md-6  formcontainer">
-    <div class="col-sm-12">
-      <h1><span>account setup</span></h1>
-    </div>
-    <div class="col-sm-12">
-    <form class="col-md-12 col-sm-12 inline-input" action="">
-      <h2 class="col-md-12">adres</h2>
-      <label class="col-md-3 col-sm-12">Straat</label>
-      <input  type="text" placeholder="straatnaam" name="straat" class="col-md-7 col-sm-12" ng-model="user.street"
-                 required/>
-     
-      <input  type="text" placeholder="nr" name="straat" class="col-md-1 " ng-model="user.streetnumber"
-                 required/>
+        <!-- form -->
+        <div class="col-md-6  formcontainer">
+            <div class="col-sm-12">
+                <h1><span>account setup</span></h1>
+            </div>
 
-      <label class="col-md-3">Gemeente</label>
-      <input  type="text" placeholder="gemeente" name="gemeente" class="col-md-6 " ng-model="user.gemeente"
-                 required/>
-      <input  type="text" placeholder="postcode" name="postcode" class="col-md-2 " ng-model="user.postcode"
-                 required/>          
+            <div class="col-sm-12">
+                <form class="col-md-12 col-sm-12 inline-input" name="form" ng-submit="saveExtraData(form)" novalidate>
 
-      <label class="col-md-3">Land</label>
-      <input type="text" placeholder="land" name="land" class="col-md-3" ng-model="user.land"
-                 required/> 
+                <div class="form-group">
+                    <h2 class="col-md-12">adres</h2>
+                    <label class="col-md-3 col-sm-12">Straat</label>
+                    <input type="text" placeholder="straatnaam" name="straat" class="col-md-7 col-sm-12"
+                           ng-model="user.address.street" required/>
+              
+                    <input type="text" placeholder="nr" name="straat" class="col-md-1 " ng-model="user.address.number"
+                           required/>
+                </div>
+                    <label class="col-md-3">Gemeente</label>
+                    <input type="text" placeholder="gemeente" name="gemeente" class="col-md-6 "
+                           ng-model="user.address.city" required/>
+                    <input type="text" placeholder="postcode" name="postcode" class="col-md-2 "
+                           ng-model="user.address.zipcode" required/>
 
-      
-      <h2 class="col-md-12 col-xs-12">gezinssituatie</h2>
-      <label class="col-md-3">Aantal bewoners</label>
-      <input type="text" placeholder="aantal" name="aantalbewoners" class="col-md-2" ng-model="user.aantalbewoners"
-                 required/> 
-      
+                    <label class="col-md-3">Land</label>
+                    <input type="text" placeholder="land" name="land" class="col-md-3" ng-model="user.address.country"
+                           required/>
+                
+                    <h2 class="col-md-12 col-xs-12">Geboortedatum</h2>
+                    <label class="col-md-3">Geboortedatum</label>
+                    <input type="date" name="geboortedatum" class="col-md-4" ng-model="user.birthday" required/>
 
-      <h2 class="col-md-12 col-xs-12">teller</h2>
-      <input type="radio" id="enkel" name="enkel" value="male" checked><label for="enkel">Enkel tarief</label>
-      <input type="radio" id="dubbel" name="enkel" value="female"><label for="dubbel">Dubbel tarief</label>
+                    <h2 class="col-md-12 col-xs-12">gezinssituatie</h2>
+                    <label class="col-md-3">Aantal bewoners</label>
+                    <input type="text" placeholder="aantal" name="aantalbewoners" class="col-md-2"
+                           ng-model="user.numberOfResidents" required/>
 
-      <h2 class="col-md-12 col-xs-12">isolatie</h2>
-      
-      <select class="col-md-3 col-xs-3">
-        <option value="slecht">slecht</option>
-        <option value="gemiddeld">gemiddeld</option>
-        <option value="goed">goed</option>
-        <option value="uitstekend">uitstekend</option>
-      </select>
 
-      <h2 class="col-md-12 col-xs-12">grootte woning</h2>
-      
-      <select class="col-md-3 col-xs-3">
-        <option value="slecht">klein</option>
-        <option value="gemiddeld">gemiddeld</option>
-        <option value="goed">groot</option>
-      </select>
+                    <h2 class="col-md-12 col-xs-12">teller</h2>
+                    <input type="radio" id="enkel" name="metertype" value="enkel" ng-model="user.meterType" checked><label for="enkel">Enkel tarief</label>
+                    <input type="radio" id="dubbel" name="metertype" value="dubbel" ng-model="user.meterType"><label for="dubbel">Dubbel tarief</label>
 
-      
-    </form>
-  </div>
-  
-</div>
+                    <h2 class="col-md-12 col-xs-12">isolatie</h2>
+                    <select class="col-md-3 col-xs-3" ng-model="user.insulation">
+                        <option value="slecht">slecht</option>
+                        <option value="gemiddeld">gemiddeld</option>
+                        <option value="goed">goed</option>
+                        <option value="uitstekend">uitstekend</option>
+                    </select>
+
+                    <h2 class="col-md-12 col-xs-12">verwarming via</h2>
+                    <select class="col-md-3 col-xs-3" ng-model="user.typeOfHeating">
+                        <option value="gas">gas</option>
+                        <option value="elektriciteit">elektriciteit</option>
+                    </select>
+
+                    <h2 class="col-md-12 col-xs-12">grootte woning</h2>
+                    <select class="col-md-3 col-xs-3" ng-model="user.sizeOfBuilding">
+                        <option value="slecht">klein</option>
+                        <option value="gemiddeld">gemiddeld</option>
+                        <option value="goed">groot</option>
+                    </select>
+
+                    <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+
+                </form>
+            </div>
+
+        </div>
