@@ -20,3 +20,5 @@ angular.module 'projectApp'
 
   $scope.$on '$destroy', ->
     socket.unsyncUpdates 'thing'
+
+  

@@ -3,7 +3,7 @@
 angular.module 'projectApp'
 .controller 'jouwEnergieCtrl', ($scope) ->
   new Chartist.Bar('.ct-chart', {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'test'],
     series: [
       [0,0,11.1,11.1,0,0,0]
     ]
@@ -15,3 +15,4 @@ angular.module 'projectApp'
     width:750,
     height:500
   });
+

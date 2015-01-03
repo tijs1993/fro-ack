@@ -13,6 +13,7 @@
 
             <div class="col-sm-12">
                 <form class="col-md-12 col-sm-12 inline-input" name="form" ng-submit="saveExtraData(form)" novalidate>
+<!-- <<<<<<< HEAD
 
                 <div class="form-group">
                     <h2 class="col-md-12">adres</h2>
@@ -36,6 +37,29 @@
                     <h2 class="col-md-12 col-xs-12">Geboortedatum</h2>
                     <label class="col-md-3">Geboortedatum</label>
                     <input type="date" name="geboortedatum" class="col-md-4" ng-model="user.birthday" required/>
+======= -->
+                    <h2 class="col-md-12">adres</h2>
+                    <label class="col-md-3 col-sm-12">Straat</label>
+                    <input type="text" placeholder="straatnaam" name="street" class="col-md-7 col-sm-12"
+                           ng-model="user.address.street" required/>
+
+                    <input type="text" placeholder="nr" name="number" class="col-md-1 " ng-model="user.address.number"
+                           required/>
+
+                    <label class="col-md-3">Gemeente</label>
+                    <input type="text" placeholder="gemeente" name="city" class="col-md-6 "
+                           ng-model="user.address.city" required/>
+                    <input type="text" placeholder="postcode" name="zipcode" class="col-md-2 "
+                           ng-model="user.address.zipcode" required/>
+
+                    <label class="col-md-3">Land</label>
+                    <input type="text" placeholder="land" name="country" class="col-md-3" ng-model="user.address.country"
+                           required/>
+
+                    <h2 class="col-md-12 col-xs-12">Geboortedatum</h2>
+                    <label class="col-md-3">Geboortedatum</label>
+                    <input type="date" name="geboortedatum" class="col-md-4" ng-model="user.birthday" required/>
+<!-- >>>>>>> eb941479af8fb7b5d91a8e9d6c9433962518667b -->
 
                     <h2 class="col-md-12 col-xs-12">gezinssituatie</h2>
                     <label class="col-md-3">Aantal bewoners</label>
@@ -63,14 +87,19 @@
 
                     <h2 class="col-md-12 col-xs-12">grootte woning</h2>
                     <select class="col-md-3 col-xs-3" ng-model="user.sizeOfBuilding">
-                        <option value="slecht">klein</option>
-                        <option value="gemiddeld">gemiddeld</option>
-                        <option value="goed">groot</option>
+                        <option value="50-"><50 m²</option>
+                        <option value="50-100">50-100 m²</option>
+                        <option value="100-150">100-150 m²</option>
+                        <option value="150+"><150 m²</option>
                     </select>
 
-                    <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+                    <button class="btn btn-lg btn-primary col-md-12 col-xs-12" type="submit">Save changes</button>
 
                 </form>
             </div>
 
+<!-- <<<<<<< HEAD -->
         </div>
+<!-- ======= -->
+        </div>
+<!-- >>>>>>> eb941479af8fb7b5d91a8e9d6c9433962518667b -->

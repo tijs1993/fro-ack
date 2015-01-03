@@ -4,6 +4,13 @@ angular.module 'projectApp'
 .controller 'SettingsCtrl', ($scope, User, Auth) ->
   #console.log(Auth.getCurrentUser());
   $scope.errors = {}
+
+
+  ########################################
+  #           GET USER ID
+  # console.log(Auth.getCurrentUser()._id);
+  ########################################
+
   $scope.changePassword = (form) ->
     $scope.submitted = false
 

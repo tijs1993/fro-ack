@@ -13,11 +13,11 @@
     }).when('/jouwenergie', {
       templateUrl: 'app/main/jouwenergie/jouwenergie.html',
       controller: 'jouwEnergieCtrl'
-    }).when('/accountsetup', {
-      templateUrl: 'app/account/accountsetup/accountsetup.html'
     }).when('/maps', {
       templateUrl: 'app/main/jouwEnergie/maps.html',
       controller: 'mapsCtrl'
+    }).when('/404', {
+      templateUrl: 'app/errors/404/404.html'
     });
   });
 
