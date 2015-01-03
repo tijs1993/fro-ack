@@ -8,5 +8,6 @@ var router = express.Router();
 router.get('/', controller.index);
 router.get('/:id', controller.findByAccountId);
 router.post('/', controller.create);
+router.get('/findone/:id', controller.findLastOneByAccountId);
 
 module.exports = router;

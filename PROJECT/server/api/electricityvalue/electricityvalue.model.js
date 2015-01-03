@@ -5,9 +5,8 @@ var mongoose = require('mongoose'),
 
 var ElectricityValueSchema = new Schema({
     measureday: Date,
-    previousValue: Number,
     currentValue: Number,
-    meterType: String,
+    previousValue: Number,
     accountId: String
 });
 

@@ -45,7 +45,7 @@
           console.log("update");
         }
       }
-      return $http.get('/jouwenergie');
+      return $location.path('/jouwenergie');
     };
   });
 

@@ -75,7 +75,11 @@
           }
         }
         if (bool === true) {
-          _results.push(values.push(elecValue.currentValue - elecValue.previousValue));
+          if (elecValue.previousValue === 0) {
+            _results.push(values.push('0'));
+          } else {
+            _results.push(values.push(elecValue.currentValue - elecValue.previousValue));
+          }
         } else {
           _results.push(values.push('0'));
         }
@@ -87,11 +91,10 @@
         labels: dates,
         series: [values]
       }, {
-        seriesBarDistance: 30,
         axisX: {
           showGrid: false
         },
-        width: 750,
+        width: 650,
         height: 500
       });
     };

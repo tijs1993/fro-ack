@@ -1,3 +1,31 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
+<!-- Titel van pagina en wat uitleg -->
 <p>Geef hier uw elektriciteitsstand op.</p>
+<p>Eventueel nog wat extra info toevoegen ook...</p>
+<br/><br/>
+
+<!-- Tekst als userdata niet ingevuld is + link naar accountsetup -->
+<div ng-if="customError === true">
+    <p>U moet eerst uw gegevens verder aanvullen vooraleer u uw elektriciteitswaarden kunt opgeven.</p>
+    <a href="/accountsetup">Klik hier</a>
+</div>
+
+<!-- Formulier om teller-standen op te geven (als userdata is opgegeven) -->
+<form name="form" ng-submit="saveElectricityValues(form)" novalidate ng-if="customError === false">
+    <!-- Datum (opgeven of huidige datum?) -->
+    <label>Datum (eventueel)</label>
+    <input type="Date" name="date" ng-model="$parent.date" required/>
+
+    <!-- Dagteller (iedereen heeft die) -->
+    <label>Dagteller</label>
+    <input type="text" name="dayMeter" ng-model="$parent.dayMeter" required autofocus/>
+
+    <!-- Nachtteller (enkel als ingelogde gebruiker dubbele meter heeft) -->
+    <div ng-if="meterType==='dubbel'">
+        <label>Nachtteller</label>
+        <input type="text" name="nightMeter" ng-model="$parent.$parent.nightMeter" required/>
+    </div>
+
+    <button class="btn btn-lg btn-primary" type="submit">Save electricityValue</button>
+</form>

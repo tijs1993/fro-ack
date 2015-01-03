@@ -28,7 +28,15 @@ exports.create = function(req, res) {
         return res.json(201, elecValue);
     });
 };
-
+exports.findLastOneByAccountId = function(req,res){
+    var query = ElectricityValue.where({accountId: req.params.id}).sort({_id: -1}).limit(1);
+    query.find(function (err, elecValue) {
+        if (err) {
+            return handleError(res, err);
+        }
+        return res.json(elecValue);
+    });
+};
 function handleError(res, err) {
     return res.send(500, err);
 }

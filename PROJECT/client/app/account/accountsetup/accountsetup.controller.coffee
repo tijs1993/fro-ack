@@ -44,5 +44,5 @@ angular.module 'projectApp'
         console.log("update");
 
     #redirect to energie-page
-    $http.get '/jouwenergie';
+    $location.path '/jouwenergie';
 
