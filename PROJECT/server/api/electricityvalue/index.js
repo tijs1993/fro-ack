@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./extradata.controller');
+var controller = require('./electricityvalue.controller');
 
 var router = express.Router();
 

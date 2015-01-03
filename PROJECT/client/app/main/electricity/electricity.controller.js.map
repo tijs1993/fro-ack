@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "electricity.controller.js",
+  "sourceRoot": "",
+  "sources": [
+    "electricity.controller.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,YAAf,CACA,CAAC,UADD,CACY,iBADZ,EAC+B,SAAC,MAAD,GAAA,CAD/B,CAFA,CAAA;AAAA"
+}

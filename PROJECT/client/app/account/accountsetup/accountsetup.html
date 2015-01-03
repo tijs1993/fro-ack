@@ -9,14 +9,16 @@
         <div class="col-md-6  formcontainer">
             <div class="col-sm-12">
                 <h1><span>account setup</span></h1>
+                <marquee scrollamount="18"><p><b style="color:lightgreen">HIER MOET NOG EEN BESCHRIJVING KOMEN WAAROM WE DEZE DATA NODIG HEBBEN. (Just letting you know ;-))</b></p></marquee>
             </div>
 
             <div class="col-sm-12">
                 <form class="col-md-12 col-sm-12 inline-input" name="form" ng-submit="saveExtraData(form)" novalidate>
+                    <input type="hidden" name="id" ng-model="user._id" value="user._id"/>
                     <h2 class="col-md-12">adres</h2>
                     <label class="col-md-3 col-sm-12">Straat</label>
                     <input type="text" placeholder="straatnaam" name="street" class="col-md-7 col-sm-12"
-                           ng-model="user.address.street" required/>
+                           ng-model="user.address.street" required value="user.address.street"/>
 
                     <input type="text" placeholder="nr" name="number" class="col-md-1 " ng-model="user.address.number"
                            required/>
