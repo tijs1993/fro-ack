@@ -10,17 +10,13 @@
     $http.get('/api/extradata/' + userId).then(function(userdata) {
       $scope.userdata = userdata;
       if ($scope.userdata.data === '' || $scope.userdata.data === null) {
-        return console.log("No extra-userdata found");
+        return $scope.customError = "no-userdata";
       } else {
         return $http.get('/api/electricityvalue/' + userId).then(function(elecValues) {
           $scope.elecValues = elecValues;
-          if ($scope.elecValues.data === '' || $scope.elecValues.data === null) {
-            return console.log("No electricity-values found.");
+          if ($scope.elecValues.data === '' || $scope.elecValues.data === null || Object.getOwnPropertyNames($scope.elecValues.data).length === 1) {
+            return $scope.customError = "no-elecData";
           } else {
-
-            /* USERDATA IS GEVONDEN + ELEKTRICITEITSWAARDEN GEVONDEN */
-
-            /* OPSTELLEN GRAFIEK */
             getLabelsForGraph(dates);
             getValuesForGraph(dates);
             return loadGraph(dates, values);

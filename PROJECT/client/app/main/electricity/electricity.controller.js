@@ -26,7 +26,11 @@
     });
     return $scope.saveElectricityValues = function(form) {
       var elecValue;
-      elecValue = parseFloat($scope.dayMeter) + parseFloat($scope.nightMeter);
+      if ($scope.val.data.meterType === "dubbel") {
+        elecValue = parseFloat($scope.dayMeter) + parseFloat($scope.nightMeter);
+      } else {
+        elecValue = parseFloat($scope.dayMeter);
+      }
       $http.post('/api/electricityvalue', {
         measureday: $scope.date,
         currentValue: elecValue,

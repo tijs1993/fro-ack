@@ -9,5 +9,6 @@ router.get('/', controller.index);
 router.get('/:id', controller.findByAccountId);
 router.post('/', controller.create);
 router.get('/findone/:id', controller.findLastOneByAccountId);
+router.post('/findonebydate',controller.findOneByDateAndAccountId);
 
 module.exports = router;

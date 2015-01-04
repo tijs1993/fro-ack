@@ -26,7 +26,10 @@ angular.module 'projectApp'
   #$scope.meterType = "dubbel";
 
   $scope.saveElectricityValues = (form) ->
-    elecValue = parseFloat($scope.dayMeter) + parseFloat($scope.nightMeter);
+    if $scope.val.data.meterType == "dubbel"
+      elecValue = parseFloat($scope.dayMeter) + parseFloat($scope.nightMeter);
+    else
+      elecValue = parseFloat($scope.dayMeter);
     # DO SEARCH FOR EXISTING DATES
     # IF VALUE FOUND -> message back, ELSE -> save
     $http.post '/api/electricityvalue',
