@@ -2,3 +2,4 @@
 
 angular.module 'projectApp'
 .controller 'mapsCtrl', ($scope) ->
+  getMaps();

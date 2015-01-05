@@ -12,10 +12,16 @@
       templateUrl: 'app/main/zonneEnergie/zonneenergie.html'
     }).when('/jouwenergie', {
       templateUrl: 'app/main/jouwenergie/jouwenergie.html',
-      controller: 'jouwEnergieCtrl'
+      controller: 'jouwEnergieCtrl',
+      authenticate: true
     }).when('/maps', {
       templateUrl: 'app/main/jouwEnergie/maps.html',
-      controller: 'mapsCtrl'
+      controller: 'mapsCtrl',
+      authenticate: true
+    }).when('/elektriciteitsmeter', {
+      templateUrl: 'app/main/electricity/electricity.html',
+      controller: 'electricityCtrl',
+      authenticate: true
     }).when('/404', {
       templateUrl: 'app/errors/404/404.html'
     });

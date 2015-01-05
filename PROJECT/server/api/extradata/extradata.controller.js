@@ -13,12 +13,13 @@ exports.index = function (req, res) {
     });
 };
 exports.findByAccountId = function (req, res) {
-    var query = ExtraData.where({accountId: "549975614cd1dfa8068e388a"});
+    //Thing.findById(req.params.id, function (err, thing) {
+    var query = ExtraData.where({accountId: req.params.id});
     query.findOne(function (err, extradata) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(200, extradata);
+        return res.json(extradata);
     });
 }
 

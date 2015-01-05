@@ -9,39 +9,17 @@
         <div class="col-md-6  formcontainer">
             <div class="col-sm-12">
                 <h1><span>account setup</span></h1>
+                <marquee scrollamount="18"><p><b style="color:lightgreen">HIER MOET NOG EEN BESCHRIJVING KOMEN WAAROM WE DEZE DATA NODIG HEBBEN. (Just letting you know ;-))</b></p></marquee>
             </div>
 
             <div class="col-sm-12">
                 <form class="col-md-12 col-sm-12 inline-input" name="form" ng-submit="saveExtraData(form)" novalidate>
-<!-- <<<<<<< HEAD
 
-                <div class="form-group">
-                    <h2 class="col-md-12">adres</h2>
-                    <label class="col-md-3 col-sm-12">Straat</label>
-                    <input type="text" placeholder="straatnaam" name="straat" class="col-md-7 col-sm-12"
-                           ng-model="user.address.street" required/>
-              
-                    <input type="text" placeholder="nr" name="straat" class="col-md-1 " ng-model="user.address.number"
-                           required/>
-                </div>
-                    <label class="col-md-3">Gemeente</label>
-                    <input type="text" placeholder="gemeente" name="gemeente" class="col-md-6 "
-                           ng-model="user.address.city" required/>
-                    <input type="text" placeholder="postcode" name="postcode" class="col-md-2 "
-                           ng-model="user.address.zipcode" required/>
-
-                    <label class="col-md-3">Land</label>
-                    <input type="text" placeholder="land" name="land" class="col-md-3" ng-model="user.address.country"
-                           required/>
-                
-                    <h2 class="col-md-12 col-xs-12">Geboortedatum</h2>
-                    <label class="col-md-3">Geboortedatum</label>
-                    <input type="date" name="geboortedatum" class="col-md-4" ng-model="user.birthday" required/>
-======= -->
+                    <input type="hidden" name="id" ng-model="user._id" value="user._id"/>
                     <h2 class="col-md-12">adres</h2>
                     <label class="col-md-3 col-sm-12">Straat</label>
                     <input type="text" placeholder="straatnaam" name="street" class="col-md-7 col-sm-12"
-                           ng-model="user.address.street" required/>
+                           ng-model="user.address.street" required value="user.address.street"/>
 
                     <input type="text" placeholder="nr" name="number" class="col-md-1 " ng-model="user.address.number"
                            required/>
@@ -59,7 +37,7 @@
                     <h2 class="col-md-12 col-xs-12">Geboortedatum</h2>
                     <label class="col-md-3">Geboortedatum</label>
                     <input type="date" name="geboortedatum" class="col-md-4" ng-model="user.birthday" required/>
-<!-- >>>>>>> eb941479af8fb7b5d91a8e9d6c9433962518667b -->
+
 
                     <h2 class="col-md-12 col-xs-12">gezinssituatie</h2>
                     <label class="col-md-3">Aantal bewoners</label>
@@ -68,8 +46,8 @@
 
 
                     <h2 class="col-md-12 col-xs-12">teller</h2>
-                    <input type="radio" id="enkel" name="metertype" value="enkel" ng-model="user.meterType" checked><label for="enkel">Enkel tarief</label>
-                    <input type="radio" id="dubbel" name="metertype" value="dubbel" ng-model="user.meterType"><label for="dubbel">Dubbel tarief</label>
+                    <input class="col-md-1 col-xs-1" type="radio" id="enkel" name="metertype" value="enkel" ng-model="user.meterType" checked><label class="col-md-10 col-xs-9" for="enkel">Enkel tarief</label>
+                    <input class="col-md-1 col-xs-1" type="radio" id="dubbel" name="metertype" value="dubbel" ng-model="user.meterType"><label for="dubbel">Dubbel tarief</label>
 
                     <h2 class="col-md-12 col-xs-12">isolatie</h2>
                     <select class="col-md-3 col-xs-3" ng-model="user.insulation">
@@ -98,8 +76,7 @@
                 </form>
             </div>
 
-<!-- <<<<<<< HEAD -->
         </div>
-<!-- ======= -->
+
         </div>
-<!-- >>>>>>> eb941479af8fb7b5d91a8e9d6c9433962518667b -->
+
