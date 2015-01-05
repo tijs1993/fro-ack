@@ -3,12 +3,16 @@
 angular.module 'projectApp'
 .controller 'NavbarCtrl', ($scope, $location, Auth) ->
   $scope.menu = [{
-    title: 'Oorsprong van energie'
+    title: 'Oorsprong'
     link: '/'
   },
     {
-      title: 'Energie besparen'
+      title: 'Besparen'
       link: '/energiebesparen'
+    },
+    {
+      title: 'Geschiedenis'
+      link: '/geschiedenis'
     }]
 
   $scope.isCollapsed = true

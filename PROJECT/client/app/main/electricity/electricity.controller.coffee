@@ -25,11 +25,6 @@ angular.module 'projectApp'
   #$scope.meterType = "dubbel";
 
   $scope.saveElectricityValues = (form) ->
-<<<<<<< HEAD
-    console.log($scope.dayMeter)
-    console.log($scope.nightMeter)
-=======
->>>>>>> e4559558d405d054758af23224fdcedcdaabbe28
     if $scope.val.data.meterType == "dubbel"
       elecValue = parseFloat($scope.dayMeter) + parseFloat($scope.nightMeter);
     else
@@ -42,5 +37,3 @@ angular.module 'projectApp'
       previousValue: $scope.prevValue
       accountId: Auth.getCurrentUser()._id
     $location.path '/jouwenergie'
-    ie merkt gelijk nie dat er een bestand bijkomt of veranderd
-    echt raar

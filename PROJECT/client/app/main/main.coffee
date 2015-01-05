@@ -11,6 +11,12 @@ angular.module 'projectApp'
     controller: 'energieBesparenCtrl'
   .when '/zonne-energie',
     templateUrl: 'app/main/zonneEnergie/zonneenergie.html'
+  .when '/water-energie',
+    templateUrl: 'app/main/waterEnergie/waterenergie.html'
+  .when '/wind-energie',
+    templateUrl: 'app/main/windEnergie/windenergie.html'
+  .when '/geschiedenis',
+    templateUrl: 'app/main/geschiedenisEnergie/geschiedenisenergie.html'
   .when '/jouwenergie',
     templateUrl: 'app/main/jouwenergie/jouwenergie.html'
     controller: 'jouwEnergieCtrl'
