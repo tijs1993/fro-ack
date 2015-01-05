@@ -25,8 +25,11 @@ angular.module 'projectApp'
   #$scope.meterType = "dubbel";
 
   $scope.saveElectricityValues = (form) ->
+<<<<<<< HEAD
     console.log($scope.dayMeter)
     console.log($scope.nightMeter)
+=======
+>>>>>>> e4559558d405d054758af23224fdcedcdaabbe28
     if $scope.val.data.meterType == "dubbel"
       elecValue = parseFloat($scope.dayMeter) + parseFloat($scope.nightMeter);
     else

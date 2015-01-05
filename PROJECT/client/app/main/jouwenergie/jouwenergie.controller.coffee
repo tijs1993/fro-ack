@@ -6,28 +6,20 @@ angular.module 'projectApp'
   values = [];
   names = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   userId = Auth.getCurrentUser()._id;
+  #console.log(userId);
   $http.get('/api/extradata/'+userId).then( (userdata)->
     $scope.userdata = userdata;
     if $scope.userdata.data is '' || $scope.userdata.data is null
-      console.log("No extra-userdata found");
-      #Go back to the page for filling in the data
+      $scope.customError = "no-userdata";
     else
       #load electricity-data
       $http.get('/api/electricityvalue/'+userId).then( (elecValues)->
         $scope.elecValues = elecValues;
-        if $scope.elecValues.data is '' || $scope.elecValues.data is null
-          console.log("No electricity-values found.");
+        if $scope.elecValues.data is '' || $scope.elecValues.data is null || Object.getOwnPropertyNames($scope.elecValues.data).length is 1
+          $scope.customError = "no-elecData";
         else
-          ### USERDATA IS GEVONDEN + ELEKTRICITEITSWAARDEN GEVONDEN ###
-          ### OPSTELLEN GRAFIEK ###
-
-          # LABELS VOOR GRAFIEK INSTELLEN
           getLabelsForGraph(dates);
-
-          # VALUES VOOR GRAFIEK INSTELLEN
           getValuesForGraph(dates);
-
-          # GRAFIEK LADEN MET LABELS EN VALUES
           loadGraph(dates,values);
       );
   );
