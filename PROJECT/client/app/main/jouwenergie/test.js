@@ -29,8 +29,9 @@ function getMaps() {
             });
         }
     }
-
+}
     function showOnMap(lat, long, i) {
+        console.log("in maps");
         var myLatLng = new google.maps.LatLng(lat, long);
         bounds.extend(myLatLng);
         /*if (locations[i][5] == 1) {
@@ -63,5 +64,4 @@ function getMaps() {
          });*/
     }
 
-    google.maps.event.addDomListener(window, 'load', getJSONData);
-};
+    //google.maps.event.addDomListener(window, 'load', getJSONData);
