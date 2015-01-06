@@ -1,27 +1,37 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container-fluid col-md-12 loggedinForms">
+<h1><span>Uw gemiddelde energieverbruik deze week (in kWh)</span></h1>
+	
 
-<marquee scrollamount="18"><p><b style="color:lightgreen">TEKST EN LAYOUT NOG AAN TE PASSEN. (Just letting you know
-    ;-))</b></p></marquee>
-<h1>Uw gemiddelde energieverbruik deze week (in kWh)</h1>
-<p>Hou er rekening mee dat wanneer u een dag vergeet op te geven, deze blanco zal zijn, en de verbruikte energie
-    opgeteld wordt bij de volgende opgegeven waarde.</p>
-<span style="font-style: italic; color:green;"> <p>Een voorbeeld: u meet maandag een verschil van 20 kWh t.o.v. zondag.<br/>
-    De dinsdag vergeet u de waarden door te geven.<br/>
-    De woensdag meet u wel weer. Uw verbruik is een verschil van 30kWh, maar dit is van 2 dagen samen (dinsdag en
-    woensdag).</p>
-    </span>
-<p>Hou hier rekening mee als er uitschieters in de grafiek zitten.</p>
-<p>Hou er ook rekening mee dat de eerste waarde die opgegeven wordt gebruikt wordt als startwaarde, en niet in de grafiek zal verschijnen.</p>
 
-<div style="border:1px solid red">
+
+<div class="col-md-3"></div>
+<div class="ct-chart"></div>
+<div class="col-md-3"></div>
+
+
+
+<div class="col-md-12">
     <span ng-if="customError === 'no-userdata'">
-        <p>U moet eerst uw gegevens aanvullen.</p>
-        <a href="/accountsetup">klik hier</a>
+        <p>U moet eerst uw gegevens aanvullen. <br>
+        <a class="redirectLink" href="/accountsetup"><span>klik hier</span></a></p>
+        
     </span>
     <span ng-if="customError === 'no-elecData'">
-        <p>U moet eerst elektriciteitswaarden doorgeven.</p>
-        <a href="/elektriciteitsmeter">klik hier</a>
+        <p>U moet eerst elektriciteitswaarden doorgeven. <br>
+        <a class="redirectLink" href="/elektriciteitsmeter"><span>klik hier</span></a></p>
+        
     </span>
 </div>
 <div class="ct-chart"></div>
 <!-- CHART CSS OPTIONS IN MAIN.SCSS (kan je dus veranderen) en ook een deel in de loadGraph-function in de controller -->
+<div class="formcontainer">
+<p class="underchart">
+<code>Opmerking</code><br>
+Hou er rekening mee dat wanneer u een dag niet opgeeft, deze blanco zal zijn, <br> en de verbruikte energie opgeteld wordt bij de volgende opgegeven waarde. <br> <br>
+	<code>Een voorbeeld:</code> U meet maandag een verschil van 20 kWh t.o.v. zondag.<br />
+            De dinsdag vergeet u de waarden door te geven.<br />
+            De woensdag meet u wel weer. Uw verbruik is een verschil van 30kWh, maar dit is van 2 dagen samen (dinsdag en woensdag). <br><br>
+            <code>Hou hier rekening mee als er uitschieters in de grafiek zitten.</code></p>
+</div>
+</div>

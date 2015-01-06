@@ -1,19 +1,29 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
+<div class="container-fluid loggedinForms formcontainer">
+
 <!-- Titel van pagina en wat uitleg -->
-<p>Geef hier uw elektriciteitsstand op.</p>
-<p>Eventueel nog wat extra info toevoegen ook...</p>
-<br/><br/>
+<h1><span>Geef hier uw elektriciteitsstand op</span></h1>
+<p>Door het ingeven van je <code>elektriciteitsstand</code> kan je leren over hoeveel je verbuikt. <br>
+zo kunnen wij jou verbruik tonen in een grafiek. <br>
+Het enige wat je nu moet doen is naar je <code>tellerstand</code> lopen, en de <code>nummers hieronder noteren</code>, wij doen de rest.</p>
+
 
 <!-- Tekst als userdata niet ingevuld is + link naar accountsetup -->
 <div ng-if="customError === true">
-    <p>U moet eerst uw gegevens verder aanvullen vooraleer u uw elektriciteitswaarden kunt opgeven.</p>
-    <a href="/accountsetup">Klik hier</a>
+    <h1><span>Foutje</span></h1>
+    <p>U moet eerst uw gegevens verder aanvullen vooraleer u uw elektriciteitswaarden kunt opgeven. <br>
+     <a class="redirectLink"  href="/accountsetup"><span>Klik hier</span></a></p>
+
+   
 </div>
+
+<div class="col-md-3"></div>
+
 <!-- Formulier om teller-standen op te geven (als userdata is opgegeven) -->
-<form name="form" ng-submit="saveElectricityValues(form)" novalidate ng-if="customError === false">
+<form name="form" class="col-md-6" ng-submit="saveElectricityValues(form)" novalidate ng-if="customError === false">
     <!-- Datum (opgeven of huidige datum?) -->
-    <label>Datum (eventueel)</label>
+    <label>Selecteer datum</label>
     <input type="Date" name="date" ng-model="$parent.date" required/>
 
     <!-- Dagteller (iedereen heeft die) -->
@@ -28,3 +38,7 @@
 
     <button class="btn btn-lg btn-primary" type="submit">Save electricityValue</button>
 </form>
+
+<div class="col-md-3"></div>
+
+</div>

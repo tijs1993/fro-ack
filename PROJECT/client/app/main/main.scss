@@ -40,6 +40,23 @@ $accent-color2: #343e4e;
   color:$accent-color2;
   font-size:11px;
 }
+
+.ct-chart .ct-label.ct-horizontal {
+  text-align: center;
+}
+.ct-chart .ct-bar {
+  stroke-width: 5px;
+}
+@media screen and (min-width: 300px) {
+  .ct-chart .ct-bar  {
+    stroke-width: 10px;
+  } 
+}
+@media screen and (min-width: 600px) {
+  .ct-chart .ct-bar {
+    stroke-width: 20px;
+  }
+}
 /*****************/
 
 /* BOOTSTRAP OVERRIDES */
@@ -106,7 +123,7 @@ $accent-color2: #343e4e;
 #banner {
     border-bottom: none;
     margin-top: -20px;
-    background-image: url("../assets/images/headerImage.png");
+    background-image: url("../assets/images/headerImageHome.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 500px;
@@ -130,11 +147,33 @@ $accent-color2: #343e4e;
     height: 500px;
 }
 
-#banner h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+#bannerWaterEnergie{
+    border-bottom: none;
+    margin-top: -20px;
+    background-image: url("../assets/images/headerImageWaterEnergie.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
 }
+
+#bannerWindEnergie{
+    border-bottom: none;
+    margin-top: -20px;
+    background-image: url("../assets/images/headerImageWindEnergie.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+#bannerGeschiedenisEnergie{
+    border-bottom: none;
+    margin-top: -20px;
+    background-image: url("../assets/images/headerImageGeschiedenis.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
 
 .containerfull {
   margin: 0 auto;
@@ -266,7 +305,7 @@ $accent-color2: #343e4e;
 .footer{
     background: $accent-color2;
     margin-top: 0;
-    //height: 70px;
+    height: 70px;
     //text-align: center;
 
     img{
@@ -326,6 +365,53 @@ $accent-color2: #343e4e;
 }
 
 
+
+.redirectLink{
+
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    // padding-bottom: 90px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+
+    &:hover{
+        text-decoration: none;
+        color: #000;
+    }
+}
+
+.posvsneg{
+
+    h2{
+        text-align: center;
+        margin-bottom: 90px;
+        span{
+            border: 2px solid #000;
+            padding: 5px 10px 5px 10px;
+
+        }
+    }
+
+    ol{
+        //list-style-type: none;
+        li{
+            margin-bottom: 30px;
+
+            &:last-child{
+                margin-bottom: 90px;
+            }
+        }
+
+
+    }
+}
+
+
 //accountsignup
 form{
     h2{
@@ -347,11 +433,36 @@ form{
         }
     }
 
-    input[type="radio"]{
-        float: left;
-        background-color: $accent-color;
+    
+
+}
+
+.loggedinForms{
+    h1{
+        margin-top: -45px;
+        margin-bottom: -15px;
     }
 
+    p{
+        //margin-bottom: 45px;
+        padding-bottom: 90px;
+        text-align: center;
+    }
+}
+
+.formcontainer{
+    input[type="radio"]{
+        margin-left: 15px;
+    }
+
+    select{
+        margin-left: 15px;
+        margin-bottom: 20px;
+    }
+}
+
+.underchart{
+    margin-top: 45px;
 }
 
 
@@ -366,12 +477,61 @@ form{
     }
 }
 
+input[type="radio"]:checked{
+    background: $accent-color;
+}
+
 
 .hero-unit {
-    position: relative;
-    padding: 30px 15px;
-    color: #F5F5F5;
-    text-align: center;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #4393B9;
+    // position: relative;
+    // padding: 30px 15px;
+    // color: #F5F5F5;
+    // text-align: center;
+    // text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    // background: $accent-color;
+    img{
+        position: absolute;
+        left: 50%;
+        top: 33%;
+        transform: translate(-50%, -33%);
+        width: 300px;
+        opacity: 0;
+        -webkit-animation: introIcon 3.5s; /* Safari 4+ */
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation:    introIcon 3.5s; /* Fx 5+ */
+        // -moz-animation-fill-mode: forwards;
+        -o-animation:      introIcon 3.5s; /* Opera 12+ */
+        -o-animation-fill-mode: forwards;
+        animation:         introIcon 3.5s; /* IE 10+, Fx 29+ */
+        animation-fill-mode: forwards;
+
+    }
+
+    .moreHorizonal{
+        position: absolute;
+        left: 50%;
+        top: 29%;
+        transform: translate(-50%, -29%);
+        height: 220px;
+        opacity: 0;
+        -webkit-animation: introIcon 4s; /* Safari 4+ */
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation:    introIcon 4s; /* Fx 5+ */
+        // -moz-animation-fill-mode: forwards;
+        -o-animation:      introIcon 4s; /* Opera 12+ */
+        -o-animation-fill-mode: forwards;
+        animation:         introIcon 4s; /* IE 10+, Fx 29+ */
+        animation-fill-mode: forwards;
+
+    }
+}
+
+
+@-webkit-keyframes introIcon {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }

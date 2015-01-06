@@ -22,7 +22,6 @@ angular.module 'projectApp'
         $scope.meterType = "dubbel";
   );
 
-
   #$scope.meterType = "dubbel";
 
   $scope.saveElectricityValues = (form) ->
@@ -37,5 +36,4 @@ angular.module 'projectApp'
       currentValue: elecValue
       previousValue: $scope.prevValue
       accountId: Auth.getCurrentUser()._id
-
-    $location.path '/jouwenergie';
+    $location.path '/jouwenergie'

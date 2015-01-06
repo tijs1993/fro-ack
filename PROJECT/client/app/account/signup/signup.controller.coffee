@@ -28,3 +28,5 @@ angular.module 'projectApp'
 
   $scope.loginOauth = (provider) ->
     $window.location.href = '/auth/' + provider
+
+  console.log "test"

@@ -14,6 +14,7 @@
 
             <div class="col-sm-12">
                 <form class="col-md-12 col-sm-12 inline-input" name="form" ng-submit="saveExtraData(form)" novalidate>
+
                     <input type="hidden" name="id" ng-model="user._id" value="user._id"/>
                     <h2 class="col-md-12">adres</h2>
                     <label class="col-md-3 col-sm-12">Straat</label>
@@ -35,7 +36,8 @@
 
                     <h2 class="col-md-12 col-xs-12">Geboortedatum</h2>
                     <label class="col-md-3">Geboortedatum</label>
-                    <input type="date" name="geboortedatum" class="col-md-3" ng-model="user.birthday" required/>
+                    <input type="date" name="geboortedatum" class="col-md-4" ng-model="user.birthday" required/>
+
 
                     <h2 class="col-md-12 col-xs-12">gezinssituatie</h2>
                     <label class="col-md-3">Aantal bewoners</label>
@@ -44,8 +46,8 @@
 
 
                     <h2 class="col-md-12 col-xs-12">teller</h2>
-                    <input type="radio" id="enkel" name="metertype" value="enkel" ng-model="user.meterType" checked><label for="enkel">Enkel tarief</label>
-                    <input type="radio" id="dubbel" name="metertype" value="dubbel" ng-model="user.meterType"><label for="dubbel">Dubbel tarief</label>
+                    <input class="col-md-1 col-xs-1" type="radio" id="enkel" name="metertype" value="enkel" ng-model="user.meterType" checked><label class="col-md-10 col-xs-9" for="enkel">Enkel tarief</label>
+                    <input class="col-md-1 col-xs-1" type="radio" id="dubbel" name="metertype" value="dubbel" ng-model="user.meterType"><label for="dubbel">Dubbel tarief</label>
 
                     <h2 class="col-md-12 col-xs-12">isolatie</h2>
                     <select class="col-md-3 col-xs-3" ng-model="user.insulation">
@@ -63,14 +65,18 @@
 
                     <h2 class="col-md-12 col-xs-12">grootte woning</h2>
                     <select class="col-md-3 col-xs-3" ng-model="user.sizeOfBuilding">
-                        <option value="slecht">klein</option>
-                        <option value="gemiddeld">gemiddeld</option>
-                        <option value="goed">groot</option>
+                        <option value="50-"><50 m²</option>
+                        <option value="50-100">50-100 m²</option>
+                        <option value="100-150">100-150 m²</option>
+                        <option value="150+"><150 m²</option>
                     </select>
 
-                    <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+                    <button class="btn btn-lg btn-primary col-md-12 col-xs-12" type="submit">Save changes</button>
 
                 </form>
             </div>
 
         </div>
+
+        </div>
+
