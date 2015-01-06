@@ -1,4 +1,53 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-maps:
 
-<div id="map-canvas" style="height:500px; width:700px;"></div>
+<div>
+    <h2>Uw gegevens:</h2>
+    <p><b>Aantal bewoners:</b> {{ user.numberOfResidents }}</p>
+    <p><b>Teller:</b> {{user.meterType}}</p>
+    <p><b>Isolatie:</b> {{ user.insulation}}</p>
+    <p><b>Verwarming via:</b> {{ user.typeOfHeating}}</p>
+    <p><b>Grootte woning:</b> {{ user.sizeOfBuilding}} m²</p>
+    <p>-----------------------------------------------------</p>
+</div>
+<div class="col-sm-12">
+    <h2>Vergelijk:</h2>
+    <form class="col-md-4 col-sm-12 inline-input" name="form">
+        <label class="col-md-3">Aantal bewoners</label>
+        <input type="text" placeholder="aantal" name="aantalbewoners" class="col-md-8" ng-model="formvalue.numberOfResidents" ng-change="changed()"/>
+
+        <label class="col-md-3">Teller</label>
+        <input class="col-md-1 col-xs-1" type="radio" id="0" name="metertype" value="0" ng-model="formvalue.meterType" checked ng-change="changed()"><label class="col-md-7 col-xs-9" for="0">--- Kies hier een optie ---</label>
+        <input class="col-md-1 col-xs-1" type="radio" id="enkel" name="metertype" value="enkel" ng-model="formvalue.meterType" ng-change="changed()"><label class="col-md-7 col-xs-9" for="enkel">Enkel tarief</label>
+        <input class="col-md-4 col-xs-1" type="radio" id="dubbel" name="metertype" value="dubbel" ng-model="formvalue.meterType" ng-change="changed()"><label class="col-md-7 col-xs-9" for="dubbel">Dubbel tarief</label>
+
+        <label class="col-md-3">Isolatie</label>
+        <select class="col-md-8 " ng-model="formvalue.insulation" ng-change="changed()">
+            <option value="0">--- Kies hier een optie ---</option>
+            <option value="slecht">slecht</option>
+            <option value="gemiddeld">gemiddeld</option>
+            <option value="goed">goed</option>
+            <option value="uitstekend">uitstekend</option>
+        </select>
+
+        <label class="col-md-3">Verwarming via:</label>
+        <select class="col-md-8" ng-model="formvalue.typeOfHeating" ng-change="changed()">
+            <option value="0">--- Kies hier een optie ---</option>
+            <option value="gas">gas</option>
+            <option value="elektriciteit">elektriciteit</option>
+        </select>
+
+        <label class="col-md-3">Grootte woning</label>
+        <select class="col-md-8" ng-model="formvalue.sizeOfBuilding" ng-change="changed()">
+            <option value="0">--- Kies hier een optie ---</option>
+            <option value="50-"><50 m²</option>
+            <option value="50-100">50-100 m²</option>
+            <option value="100-150">100-150 m²</option>
+            <option value="150+"><150 m²</option>
+        </select>
+        <div>{{customError}}</div>
+
+    </form>
+    <div id="map-canvas" style="height:500px; width:700px;"></div>
+</div>
+
+

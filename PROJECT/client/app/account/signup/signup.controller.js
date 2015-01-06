@@ -23,9 +23,10 @@
         });
       }
     };
-    return $scope.loginOauth = function(provider) {
+    $scope.loginOauth = function(provider) {
       return $window.location.href = '/auth/' + provider;
     };
+    return console.log("test");
   });
 
 }).call(this);

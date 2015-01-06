@@ -5,8 +5,16 @@ angular.module 'projectApp'
   userId = Auth.getCurrentUser()._id;
 
   #VARS
+  $scope.formvalue = {};
+  $scope.formvalue.numberOfResidents = "";
+  $scope.formvalue.meterType = "0";
+  $scope.formvalue.insulation = "0";
+  $scope.formvalue.sizeOfBuilding = "0";
+  $scope.formvalue.typeOfHeating = "0";
+  $scope.customError = "";
   api = "AIzaSyDiPv6sSKzmOR1INjC_9kHxUY6bpwKOXHc";
   map;
+  usersArray = [];
   i = 0;
   bounds = new google.maps.LatLngBounds();
   mapOptions = {
@@ -16,26 +24,56 @@ angular.module 'projectApp'
   locations = [];
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  $http.get('/api/extradata/').then( (userdata)->
-    $scope.userdata = userdata;
-    for user in $scope.userdata.data
-      if user.accountId == userId
-        image = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-      else
-        image = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
-      locations.push([user._id,user.address.street, user.address.zipcode, user.address.city, user.address.country])
+  $http.get('/api/extradata/'+userId).then( (userdata)->
+    $scope.user = userdata.data;
+    #console.log($scope.user);
   );
 
+  #Get all userdata
+  $http.get('/api/extradata/').then( (usersdata)->
+    usersArray = usersdata.data;
+    getJSONData(usersArray);
+  );
+
+
+  #Change-functions
+  $scope.changed = ()->
+    users = [];
+    for user in usersArray
+      for datafield of $scope.formvalue
+        if $scope.formvalue[datafield] != "" && $scope.formvalue[datafield] != "0"
+          if user[datafield] == $scope.formvalue[datafield]
+            if user not in users
+              users.push(user);
+          else
+            if user in users
+              index = users.indexOf(user);
+              console.log(index);
+              users.splice(index,1)
+              break;
+            else
+              break;
+    console.log(users);
+    if users.length == 0
+      console.log("customError");
+      $scope.customError = "Er werden geen waarden gevonden die voldoen aan uw zoekcriteria. Alle gebruikers zullen worden getoond.";
+      users = usersArray;
+    else
+      $scope.customError = "";
+    getJSONData(users);
+
   #FUNCTIONS
-  getJSONData = () ->
-    console.log(locations);
-    for user in $scope.userdata.data
+  getJSONData = (users) ->
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    #console.log(users)
+    for user in users
       if user.accountId == userId
         image = '/assets/images/markers/letter_h.png';
       else
         image = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
-      #locations.push([user._id,user.address.street, user.address.zipcode, user.address.city, user.address.country])
+      locations.push([user._id,user.address.street, user.address.zipcode, user.address.city, user.address.country])
       urlForLatAndLong = "https://maps.googleapis.com/maps/api/geocode/json?address=" + user.address.street + "+" + user.address.city + "+" + user.address.country + "&key=" + api;
+      #console.log(urlForLatAndLong);
       $.ajax
         url: urlForLatAndLong,
         dataType: 'json',
@@ -43,6 +81,7 @@ angular.module 'projectApp'
         success: (data) ->
           lat = data["results"][0]["geometry"]["location"]["lat"];
           long = data["results"][0]["geometry"]["location"]["lng"];
+          #console.log(lat + "; "+long)
           showOnMap(lat, long, i);
       i++;
 
@@ -69,4 +108,3 @@ angular.module 'projectApp'
     )(marker, i));
     map.fitBounds(bounds);
 
-  google.maps.event.addDomListener(window, 'load', getJSONData);
