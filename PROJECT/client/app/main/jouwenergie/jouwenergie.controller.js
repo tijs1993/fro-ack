@@ -25,14 +25,6 @@
       }
     });
     getLabelsForGraph = function(dates) {
-
-      /*
-        DATUMLABELS AANMAKEN OP BASIS VAN HUIDIGE DAG
-          1. datum van een week terug bepalen
-          2. overlopen van de hele week
-             2a. label-string opstellen
-             2b. datum in label-array plaatsen
-       */
       var date, dateValue, _results;
       date = new Date();
       date.setDate(date.getDate() - 6);
@@ -45,16 +37,6 @@
       return _results;
     };
     getValuesForGraph = function(dates) {
-
-      /*
-        WAARDEN OPVRAGEN UIT DATABASE OP BASIS VAN HUIDIGE DAG
-          1. alle datums van de week overlopen (via label-array)
-             1a. Bool aanmaken
-             1b. array met datums uit database overlopen
-                 1ba. controle of datum van de week overeenkomt met datum uit de database
-                 1bb. indien ja: bool op true zetten
-             1c. controle of bool true of false is om value te stockeren in array
-       */
       var bool, date, dateName, dateOfWeek, elecValue, _i, _j, _len, _len1, _ref, _results;
       _results = [];
       for (_i = 0, _len = dates.length; _i < _len; _i++) {

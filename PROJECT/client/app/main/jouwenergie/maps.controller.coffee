@@ -5,6 +5,8 @@ angular.module 'projectApp'
   userId = Auth.getCurrentUser()._id;
 
   #VARS
+  $scope.elecAverage = 0;
+  electricityValues = [];
   $scope.formvalue = {};
   $scope.formvalue.numberOfResidents = "";
   $scope.formvalue.meterType = "0";
@@ -26,12 +28,17 @@ angular.module 'projectApp'
 
   $http.get('/api/extradata/'+userId).then( (userdata)->
     $scope.user = userdata.data;
-    #console.log($scope.user);
+  );
+  $http.get("/api/electricityvalue/"+userId).then( (values)->
+    $scope.elecAverage = calculateAverage(values.data);
   );
 
   #Get all userdata
   $http.get('/api/extradata/').then( (usersdata)->
     usersArray = usersdata.data;
+  );
+  $http.get('/api/electricityvalue/').then( (values)->
+    electricityValues = values.data;
     getJSONData(usersArray);
   );
 
@@ -48,14 +55,11 @@ angular.module 'projectApp'
           else
             if user in users
               index = users.indexOf(user);
-              console.log(index);
               users.splice(index,1)
               break;
             else
               break;
-    console.log(users);
     if users.length == 0
-      console.log("customError");
       $scope.customError = "Er werden geen waarden gevonden die voldoen aan uw zoekcriteria. Alle gebruikers zullen worden getoond.";
       users = usersArray;
     else
@@ -65,27 +69,34 @@ angular.module 'projectApp'
   #FUNCTIONS
   getJSONData = (users) ->
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    #console.log(users)
     for user in users
-      if user.accountId == userId
-        image = '/assets/images/markers/letter_h.png';
-      else
-        image = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
-      locations.push([user._id,user.address.street, user.address.zipcode, user.address.city, user.address.country])
-      urlForLatAndLong = "https://maps.googleapis.com/maps/api/geocode/json?address=" + user.address.street + "+" + user.address.city + "+" + user.address.country + "&key=" + api;
-      #console.log(urlForLatAndLong);
-      $.ajax
-        url: urlForLatAndLong,
-        dataType: 'json',
-        async: false,
-        success: (data) ->
-          lat = data["results"][0]["geometry"]["location"]["lat"];
-          long = data["results"][0]["geometry"]["location"]["lng"];
-          #console.log(lat + "; "+long)
-          showOnMap(lat, long, i);
-      i++;
+      elecValues = [];
+      for elecValue in electricityValues
+        if elecValue.accountId == user.accountId
+          elecValues.push(elecValue);
+      elecAverage = calculateAverage(elecValues);
+      generateMaps(user, elecAverage);
 
-  showOnMap = (lat, long, i) ->
+  generateMaps = (user, elecAverage) ->
+    if user.accountId == userId
+      image = '/assets/images/markers/letter_h.png';
+    else if $scope.elecAverage > elecAverage
+      image = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+    else
+      image = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+    locations.push([user._id,user.address.street, user.address.zipcode, user.address.city, user.address.country])
+    urlForLatAndLong = "https://maps.googleapis.com/maps/api/geocode/json?address=" + user.address.street + "+" + user.address.city + "+" + user.address.country + "&key=" + api;
+    $.ajax
+      url: urlForLatAndLong,
+      dataType: 'json',
+      async: false,
+      success: (data) ->
+        lat = data["results"][0]["geometry"]["location"]["lat"];
+        long = data["results"][0]["geometry"]["location"]["lng"];
+        showOnMap(lat, long, i, elecAverage);
+    i++;
+
+  showOnMap = (lat, long, i, elecAverage) ->
     myLatLng = new google.maps.LatLng(lat, long);
     bounds.extend(myLatLng);
     marker = new google.maps.Marker(
@@ -97,14 +108,31 @@ angular.module 'projectApp'
     marker;
     google.maps.event.addListener(marker, 'click', ((marker, i) ->
       ->
-        content = "<div id='content'>" +
-                "<h1>" + locations[i][0] + "</h1>" +
-                "<p><i>" + locations[i][1] + "<br />" +
-                locations[i][2] + " " + locations[i][3] + "</i></p>" +
-                "</div>";
+        content = "<div id='content'><h3>Gemiddelde verbruik/ dag: ";
+        content += elecAverage;
+        content += " kWh</h3><p>";
+        content += locations[i][1];
+        content += "<br />";
+        content += locations[i][2];
+        content += " ";
+        content += locations[i][3];
+        content += "</i></p></div>";
         infoWindow.setContent(content);
         infoWindow.open(map, marker);
 
     )(marker, i));
     map.fitBounds(bounds);
+
+  calculateAverage = (values) ->
+    if values.length != 0
+      elecValue = 0;
+      for value in values
+        if value.previousValue isnt 0
+          elecValue += value.currentValue - value.previousValue;
+          elecValue = elecValue/(values.length - 1);
+        else
+          elecValue = 0;
+      return Math.round(elecValue*10)/10;
+    else
+      return 0;
 

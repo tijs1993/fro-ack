@@ -6,6 +6,7 @@ angular.module 'projectApp'
   values = [];
   names = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   userId = Auth.getCurrentUser()._id;
+  
   #console.log(userId);
   $http.get('/api/extradata/'+userId).then( (userdata)->
     $scope.userdata = userdata;
@@ -25,13 +26,6 @@ angular.module 'projectApp'
   );
 
   getLabelsForGraph = (dates) ->
-    ###
-      DATUMLABELS AANMAKEN OP BASIS VAN HUIDIGE DAG
-        1. datum van een week terug bepalen
-        2. overlopen van de hele week
-           2a. label-string opstellen
-           2b. datum in label-array plaatsen
-    ###
     date = new Date();
     date.setDate(date.getDate() - 6);
     while date <= new Date()
@@ -40,15 +34,6 @@ angular.module 'projectApp'
       date.setDate(date.getDate()+1);
 
   getValuesForGraph = (dates) ->
-    ###
-      WAARDEN OPVRAGEN UIT DATABASE OP BASIS VAN HUIDIGE DAG
-        1. alle datums van de week overlopen (via label-array)
-           1a. Bool aanmaken
-           1b. array met datums uit database overlopen
-               1ba. controle of datum van de week overeenkomt met datum uit de database
-               1bb. indien ja: bool op true zetten
-           1c. controle of bool true of false is om value te stockeren in array
-    ###
     for dateOfWeek in dates
       bool = false;
       for elecValue in $scope.elecValues.data

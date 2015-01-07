@@ -4,8 +4,10 @@
   var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   angular.module('projectApp').controller('mapsCtrl', function($scope, Auth, $location, $http) {
-    var api, bounds, getJSONData, i, image, locations, map, mapOptions, showOnMap, userId, usersArray;
+    var api, bounds, calculateAverage, electricityValues, generateMaps, getJSONData, i, image, locations, map, mapOptions, showOnMap, userId, usersArray;
     userId = Auth.getCurrentUser()._id;
+    $scope.elecAverage = 0;
+    electricityValues = [];
     $scope.formvalue = {};
     $scope.formvalue.numberOfResidents = "";
     $scope.formvalue.meterType = "0";
@@ -27,8 +29,14 @@
     $http.get('/api/extradata/' + userId).then(function(userdata) {
       return $scope.user = userdata.data;
     });
+    $http.get("/api/electricityvalue/" + userId).then(function(values) {
+      return $scope.elecAverage = calculateAverage(values.data);
+    });
     $http.get('/api/extradata/').then(function(usersdata) {
-      usersArray = usersdata.data;
+      return usersArray = usersdata.data;
+    });
+    $http.get('/api/electricityvalue/').then(function(values) {
+      electricityValues = values.data;
       return getJSONData(usersArray);
     });
     $scope.changed = function() {
@@ -45,7 +53,6 @@
             } else {
               if (__indexOf.call(users, user) >= 0) {
                 index = users.indexOf(user);
-                console.log(index);
                 users.splice(index, 1);
                 break;
               } else {
@@ -55,9 +62,7 @@
           }
         }
       }
-      console.log(users);
       if (users.length === 0) {
-        console.log("customError");
         $scope.customError = "Er werden geen waarden gevonden die voldoen aan uw zoekcriteria. Alle gebruikers zullen worden getoond.";
         users = usersArray;
       } else {
@@ -66,34 +71,48 @@
       return getJSONData(users);
     };
     getJSONData = function(users) {
-      var urlForLatAndLong, user, _i, _len, _results;
+      var elecAverage, elecValue, elecValues, user, _i, _j, _len, _len1, _results;
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
       _results = [];
       for (_i = 0, _len = users.length; _i < _len; _i++) {
         user = users[_i];
-        if (user.accountId === userId) {
-          image = '/assets/images/markers/letter_h.png';
-        } else {
-          image = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
-        }
-        locations.push([user._id, user.address.street, user.address.zipcode, user.address.city, user.address.country]);
-        urlForLatAndLong = "https://maps.googleapis.com/maps/api/geocode/json?address=" + user.address.street + "+" + user.address.city + "+" + user.address.country + "&key=" + api;
-        $.ajax({
-          url: urlForLatAndLong,
-          dataType: 'json',
-          async: false,
-          success: function(data) {
-            var lat, long;
-            lat = data["results"][0]["geometry"]["location"]["lat"];
-            long = data["results"][0]["geometry"]["location"]["lng"];
-            return showOnMap(lat, long, i);
+        elecValues = [];
+        for (_j = 0, _len1 = electricityValues.length; _j < _len1; _j++) {
+          elecValue = electricityValues[_j];
+          if (elecValue.accountId === user.accountId) {
+            elecValues.push(elecValue);
           }
-        });
-        _results.push(i++);
+        }
+        elecAverage = calculateAverage(elecValues);
+        _results.push(generateMaps(user, elecAverage));
       }
       return _results;
     };
-    return showOnMap = function(lat, long, i) {
+    generateMaps = function(user, elecAverage) {
+      var urlForLatAndLong;
+      if (user.accountId === userId) {
+        image = '/assets/images/markers/letter_h.png';
+      } else if ($scope.elecAverage > elecAverage) {
+        image = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+      } else {
+        image = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+      }
+      locations.push([user._id, user.address.street, user.address.zipcode, user.address.city, user.address.country]);
+      urlForLatAndLong = "https://maps.googleapis.com/maps/api/geocode/json?address=" + user.address.street + "+" + user.address.city + "+" + user.address.country + "&key=" + api;
+      $.ajax({
+        url: urlForLatAndLong,
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+          var lat, long;
+          lat = data["results"][0]["geometry"]["location"]["lat"];
+          long = data["results"][0]["geometry"]["location"]["lng"];
+          return showOnMap(lat, long, i, elecAverage);
+        }
+      });
+      return i++;
+    };
+    showOnMap = function(lat, long, i, elecAverage) {
       var infoWindow, marker, myLatLng;
       myLatLng = new google.maps.LatLng(lat, long);
       bounds.extend(myLatLng);
@@ -107,12 +126,38 @@
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           var content;
-          content = "<div id='content'>" + "<h1>" + locations[i][0] + "</h1>" + "<p><i>" + locations[i][1] + "<br />" + locations[i][2] + " " + locations[i][3] + "</i></p>" + "</div>";
+          content = "<div id='content'><h3>Gemiddelde verbruik/ dag: ";
+          content += elecAverage;
+          content += " kWh</h3><p>";
+          content += locations[i][1];
+          content += "<br />";
+          content += locations[i][2];
+          content += " ";
+          content += locations[i][3];
+          content += "</i></p></div>";
           infoWindow.setContent(content);
           return infoWindow.open(map, marker);
         };
       })(marker, i));
       return map.fitBounds(bounds);
+    };
+    return calculateAverage = function(values) {
+      var elecValue, value, _i, _len;
+      if (values.length !== 0) {
+        elecValue = 0;
+        for (_i = 0, _len = values.length; _i < _len; _i++) {
+          value = values[_i];
+          if (value.previousValue !== 0) {
+            elecValue += value.currentValue - value.previousValue;
+            elecValue = elecValue / (values.length - 1);
+          } else {
+            elecValue = 0;
+          }
+        }
+        return Math.round(elecValue * 10) / 10;
+      } else {
+        return 0;
+      }
     };
   });
 
