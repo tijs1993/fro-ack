@@ -2,6 +2,7 @@
 'use strict';
 
 module.exports = function (grunt) {
+  grunt.loadNpmTasks('grunt-modulus-deploy');
   var localConfig;
   try {
     localConfig = require('./server/config/local.env');
@@ -25,6 +26,13 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+    modulus-deploy:{
+      stage:{
+        options:{
+          project: 'energee-project'
+        }
+      },
+    },
 
     // Project settings
     pkg: grunt.file.readJSON('package.json'),
