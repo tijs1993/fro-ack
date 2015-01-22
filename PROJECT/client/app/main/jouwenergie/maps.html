@@ -4,11 +4,15 @@
 <div class="col-md-12">
 
     <!--  DIV MET ERROR NOG AAN TE PASSEN -->
-    <div style="color: red; font-weight: bold">
+<!--     <div style="color: red; font-weight: bold">
         Hier komt een error indien er geen gegevens zijn die overeenkomen met de selectie van de gebruiker...
         kan je deze ook nog wat deftiger schikken of op een andere plaats zetten? Er wordt niets getoont als er geen error is.
         De error is: Er werden geen waarden gevonden die voldoen aan uw zoekcriteria. Alle gebruikers zullen worden getoond.
         Dynamisch te tonen door gebruik van{ {customError}} nodig. {{customError}}
+    </div> -->
+
+    <div class="col-xs-12 col-sm-12 col-md-12 container-fluid evenlessMargin customerror">
+        <p class="error">{{customError}}</p>
     </div>
 
 

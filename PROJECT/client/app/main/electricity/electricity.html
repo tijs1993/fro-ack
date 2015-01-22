@@ -9,6 +9,7 @@ zo kunnen wij jou verbruik tonen in een grafiek. <br>
 Het enige wat je nu moet doen is naar je <code>tellerstand</code> lopen, en de <code>nummers hieronder noteren</code>, wij doen de rest.</p>
 
 
+
 <!-- Tekst als userdata niet ingevuld is + link naar accountsetup -->
 <div ng-if="customError === true">
     <h1><span>Foutje</span></h1>
@@ -35,7 +36,7 @@ Het enige wat je nu moet doen is naar je <code>tellerstand</code> lopen, en de <
         <label>Nachtteller</label>
         <input type="text" name="nightMeter" ng-model="$parent.$parent.nightMeter" required/>
     </div>
-    <div>{{error}}</div>
+    <div class="error">{{error}}</div>
     <button class="btn btn-lg btn-primary" type="submit">Save electricityValue</button>
 </form>
 

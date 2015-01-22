@@ -13,6 +13,7 @@ body, html{
 //colors
 $accent-color: #f36861;
 $accent-color2: #343e4e;
+$error: #f14f47;
 
 .navbar-default{
     background: #FFF;
@@ -459,6 +460,11 @@ form{
     margin-bottom: 20px;
 }
 
+.evenlessMargin{
+        padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .loggedinForms{
     h1{
         margin-top: -45px;
@@ -487,6 +493,9 @@ form{
     margin-top: 45px;
 }
 
+.customerror{
+    text-align: center;
+}
 
 .inline-input{
     label{
@@ -507,13 +516,13 @@ input[type="radio"]:checked{
     font-weight: bold;
 }
 
+.error{
+    color: $error;
+    font-weight: bold;
+}
+
 .hero-unit {
-    // position: relative;
-    // padding: 30px 15px;
-    // color: #F5F5F5;
-    // text-align: center;
-    // text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    // background: $accent-color;
+
     img{
         position: absolute;
         left: 50%;
@@ -524,7 +533,6 @@ input[type="radio"]:checked{
         -webkit-animation: introIcon 3.5s; /* Safari 4+ */
         -webkit-animation-fill-mode: forwards;
         -moz-animation:    introIcon 3.5s; /* Fx 5+ */
-        // -moz-animation-fill-mode: forwards;
         -o-animation:      introIcon 3.5s; /* Opera 12+ */
         -o-animation-fill-mode: forwards;
         animation:         introIcon 3.5s; /* IE 10+, Fx 29+ */
