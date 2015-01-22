@@ -46,7 +46,7 @@
         user = usersArray[_i];
         for (datafield in $scope.formvalue) {
           if ($scope.formvalue[datafield] !== "" && $scope.formvalue[datafield] !== "0") {
-            if (user[datafield] === $scope.formvalue[datafield]) {
+            if (user[datafield].toString() === $scope.formvalue[datafield]) {
               if (__indexOf.call(users, user) < 0) {
                 users.push(user);
               }
@@ -142,19 +142,16 @@
       return map.fitBounds(bounds);
     };
     return calculateAverage = function(values) {
-      var elecValue, value, _i, _len;
+      var diffDays, differenceFirstLast, elecValue, firstDate, oneDay, secondDate;
       if (values.length !== 0) {
         elecValue = 0;
-        for (_i = 0, _len = values.length; _i < _len; _i++) {
-          value = values[_i];
-          if (value.previousValue !== 0) {
-            elecValue += value.currentValue - value.previousValue;
-            elecValue = elecValue / (values.length - 1);
-          } else {
-            elecValue = 0;
-          }
-        }
-        return Math.round(elecValue * 10) / 10;
+        differenceFirstLast = values[values.length - 1].currentValue - values[0].currentValue;
+        oneDay = 24 * 60 * 60 * 1000;
+        firstDate = new Date(values[values.length - 1].measureday);
+        secondDate = new Date(values[0].measureday);
+        diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / oneDay) + 1);
+        console.log(differenceFirstLast / diffDays);
+        return Math.round((differenceFirstLast / diffDays) * 10) / 10;
       } else {
         return 0;
       }

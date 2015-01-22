@@ -26,14 +26,6 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
-    modulus-deploy:{
-      stage:{
-        options:{
-          project: 'energee-project'
-        }
-      },
-    },
-
     // Project settings
     pkg: grunt.file.readJSON('package.json'),
     yeoman: {

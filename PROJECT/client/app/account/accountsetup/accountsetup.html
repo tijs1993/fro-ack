@@ -12,7 +12,7 @@
                 We verzekeren u dat deze gegevens enkel voor deze website zullen worden gebruikt, en niet zullen worden doorgegeven aan derden.</p>
 
             <div class="col-sm-12">
-                <form class="col-md-12 col-sm-12 inline-input" name="form" ng-submit="saveExtraData(form)" novalidate>
+                <form class="col-md-12 col-sm-12 inline-input" name="form" ng-submit="saveExtraData(form)" >
 
                     <input type="hidden" name="id" ng-model="user._id" value="user._id"/>
                     <h2 class="col-md-12">adres</h2>
@@ -64,10 +64,10 @@
 
                     <h2 class="col-md-12 col-xs-12">grootte woning</h2>
                     <select class="col-md-3 col-xs-3" ng-model="user.sizeOfBuilding">
-                        <option value="50-"><50 m²</option>
-                        <option value="50-100">50-100 m²</option>
-                        <option value="100-150">100-150 m²</option>
-                        <option value="150+"><150 m²</option>
+                        <option value="50-">&lt;50 m&sup2;</option>
+                        <option value="50-100">50-100 m&sup2;</option>
+                        <option value="100-150">100-150 m&sup2;</option>
+                        <option value="150+">&gt;150 m&sup2;</option>
                     </select>
 
                     <button class="btn btn-lg btn-primary col-md-12 col-xs-12" type="submit">Save changes</button>

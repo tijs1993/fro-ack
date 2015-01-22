@@ -42,6 +42,22 @@ angular.module 'projectApp'
       else
         #UPDATE EXISTING DATA
         console.log("update");
+        $http.put '/api/extradata/update',
+          _id: $scope.user._id
+          address:
+            street: $scope.user.address.street
+            number: $scope.user.address.number
+            zipcode: $scope.user.address.zipcode
+            city: $scope.user.address.city
+            country: $scope.user.address.country
+          birthday: toUTCDate($scope.user.birthday)
+          numberOfResidents: $scope.user.numberOfResidents
+          meterType: $scope.user.meterType
+          insulation: $scope.user.insulation
+          typeOfHeating: $scope.user.typeOfHeating
+          sizeOfBuilding: $scope.user.sizeOfBuilding
+          accountId: Auth.getCurrentUser()._id
+          isOnline: true;
 
     #redirect to energie-page
     $location.path '/jouwenergie';

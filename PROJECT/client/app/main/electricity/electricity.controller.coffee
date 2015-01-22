@@ -5,11 +5,17 @@ angular.module 'projectApp'
   $scope.getCurrentUser = Auth.getCurrentUser;
   userId = Auth.getCurrentUser()._id;
   $scope.date = new Date();
+  $scope.elecValues = [];
+  $scope.error = "";
+  isSameDay = false;
   $http.get('/api/electricityvalue/findone/'+userId).then((value) ->
     if value.data is '' || value.data is null || Object.getOwnPropertyNames(value.data).length is 1
       $scope.prevValue = 0;
     else
       $scope.prevValue = value.data[0].currentValue;
+  );
+  $http.get('/api/electricityvalue/findall/'+userId).then((value) ->
+    $scope.elecValues = value.data;
   );
 
   $http.get('/api/extradata/'+userId).then( (val)->
@@ -30,10 +36,19 @@ angular.module 'projectApp'
     else
       elecValue = parseFloat($scope.dayMeter);
     # DO SEARCH FOR EXISTING DATES
-    # IF VALUE FOUND -> message back, ELSE -> save
-    $http.post '/api/electricityvalue',
-      measureday: $scope.date
-      currentValue: elecValue
-      previousValue: $scope.prevValue
-      accountId: Auth.getCurrentUser()._id
-    $location.path '/jouwenergie'
+    if $scope.elecValues.length is 0
+    else
+      for value in $scope.elecValues
+        date = new Date(value.measureday);
+        valueDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        formDate = new Date($scope.date.getFullYear(), $scope.date.getMonth(),$scope.date.getDate());
+        if valueDate.getTime() == formDate.getTime()
+          isSameDay = true;
+          $scope.error = "U hebt reeds de waarden doorgegeven voor deze dag.";
+      if isSameDay == false
+        $http.post '/api/electricityvalue',
+          measureday: $scope.date
+          currentValue: elecValue
+          previousValue: $scope.prevValue
+          accountId: Auth.getCurrentUser()._id
+        $location.path '/jouwenergie'

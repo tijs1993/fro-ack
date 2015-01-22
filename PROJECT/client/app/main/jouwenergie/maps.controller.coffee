@@ -49,7 +49,7 @@ angular.module 'projectApp'
     for user in usersArray
       for datafield of $scope.formvalue
         if $scope.formvalue[datafield] != "" && $scope.formvalue[datafield] != "0"
-          if user[datafield] == $scope.formvalue[datafield]
+          if user[datafield].toString() == $scope.formvalue[datafield]
             if user not in users
               users.push(user);
           else
@@ -126,13 +126,13 @@ angular.module 'projectApp'
   calculateAverage = (values) ->
     if values.length != 0
       elecValue = 0;
-      for value in values
-        if value.previousValue isnt 0
-          elecValue += value.currentValue - value.previousValue;
-          elecValue = elecValue/(values.length - 1);
-        else
-          elecValue = 0;
-      return Math.round(elecValue*10)/10;
+      differenceFirstLast = (values[values.length - 1].currentValue - values[0].currentValue);
+      oneDay = 24*60*60*1000;
+      firstDate = new Date(values[values.length - 1].measureday);
+      secondDate = new Date(values[0].measureday);
+      diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)) + 1);
+      console.log(differenceFirstLast/diffDays);
+      return Math.round((differenceFirstLast/diffDays)*10)/10;
     else
       return 0;
 

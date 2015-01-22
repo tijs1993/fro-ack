@@ -2,16 +2,22 @@
 (function() {
   'use strict';
   angular.module('projectApp').controller('electricityCtrl', function($scope, $http, Auth, $location) {
-    var userId;
+    var isSameDay, userId;
     $scope.getCurrentUser = Auth.getCurrentUser;
     userId = Auth.getCurrentUser()._id;
     $scope.date = new Date();
+    $scope.elecValues = [];
+    $scope.error = "";
+    isSameDay = false;
     $http.get('/api/electricityvalue/findone/' + userId).then(function(value) {
       if (value.data === '' || value.data === null || Object.getOwnPropertyNames(value.data).length === 1) {
         return $scope.prevValue = 0;
       } else {
         return $scope.prevValue = value.data[0].currentValue;
       }
+    });
+    $http.get('/api/electricityvalue/findall/' + userId).then(function(value) {
+      return $scope.elecValues = value.data;
     });
     $http.get('/api/extradata/' + userId).then(function(val) {
       $scope.val = val;
@@ -25,19 +31,36 @@
       }
     });
     return $scope.saveElectricityValues = function(form) {
-      var elecValue;
+      var date, elecValue, formDate, value, valueDate, _i, _len, _ref;
       if ($scope.val.data.meterType === "dubbel") {
         elecValue = parseFloat($scope.dayMeter) + parseFloat($scope.nightMeter);
       } else {
         elecValue = parseFloat($scope.dayMeter);
       }
-      $http.post('/api/electricityvalue', {
-        measureday: $scope.date,
-        currentValue: elecValue,
-        previousValue: $scope.prevValue,
-        accountId: Auth.getCurrentUser()._id
-      });
-      return $location.path('/jouwenergie');
+      if ($scope.elecValues.length === 0) {
+
+      } else {
+        _ref = $scope.elecValues;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          value = _ref[_i];
+          date = new Date(value.measureday);
+          valueDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+          formDate = new Date($scope.date.getFullYear(), $scope.date.getMonth(), $scope.date.getDate());
+          if (valueDate.getTime() === formDate.getTime()) {
+            isSameDay = true;
+            $scope.error = "U hebt reeds de waarden doorgegeven voor deze dag.";
+          }
+        }
+        if (isSameDay === false) {
+          $http.post('/api/electricityvalue', {
+            measureday: $scope.date,
+            currentValue: elecValue,
+            previousValue: $scope.prevValue,
+            accountId: Auth.getCurrentUser()._id
+          });
+          return $location.path('/jouwenergie');
+        }
+      }
     };
   });
 
